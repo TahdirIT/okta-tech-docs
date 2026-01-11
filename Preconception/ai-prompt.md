@@ -6,3 +6,4 @@
 5. There are two projects opened in Cursor under one folder:
 <root>/okta-tech-docs (for Tech documents)
 <root>/v5website (Old Laravel Project)
+

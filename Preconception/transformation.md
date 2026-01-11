@@ -42,4 +42,5 @@ This document outlines the strategic and technical evolution from Tahdir to Okta
 ### 2. *With Partnerships:*
     - Partnerships—under the traditional partnership agreement—require manual implementation within the platform and application. → Partnerships—after submitting a request and receiving team approval—are provided with an API that enables them to build their own integrations and exchange data through a flexible permission-based access system.
 ### 3. *With System:*
-    - The visual style is developed with inspiration from the Digital Government Authority Platform Code standards, serving as a reference rather than a mandatory or full compliance framework. (كود المنصات ضمن هيئة الحكومة الرقمية). Visit: https://design.dga.gov.sa/. 
+    - The system is designed with a clear separation between a reusable platform kernel and domain-specific services, allowing the kernel to function as a standalone SaaS foundation adaptable to various business domains.
+    - The visual style is developed with inspiration from the Digital Government Authority Platform Code standards, serving as a reference rather than a mandatory or full compliance framework. (كود المنصات ضمن هيئة الحكومة الرقمية). Visit: https://design.dga.gov.sa/.
