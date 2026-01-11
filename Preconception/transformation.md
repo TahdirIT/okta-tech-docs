@@ -10,17 +10,19 @@ This document outlines the strategic and technical evolution from Tahdir to Okta
 ## Tech
 ### Old Project (Tahdir)
     - Architecture: Monolith core-based architecture 
-    - Database: MySQL
+    - Database: MySQL and Single-DB
+    - // Proposal: Cache :
     - Framework: Laravel 11
     - Frontend: Livewire 3 
     - Messaging: Firebase
     - Monitoring: Pulse 
 ### New Project (Okta v1 - In-scope decisions)
     - Architecture: Monolithic modular architecture (package: nwidart/laravel-modules)
-    - Database: PostgreSQL + Redis
+    - Database: PostgreSQL + Multi-DB (Each DB relates to a separated service)
+    - // Proposal: Cache : Redis
     - Framework: Laravel 12
     - Frontend: Livewire 4 with React embedded
-    - Messaging: Firebase messaging and Pushups 
+    - Messaging: Firebase messaging
     - Style: SaaS style
     - // Proposal: Monitoring: Sentury.io
     - // Proposal: Monitoring: Nightwatch

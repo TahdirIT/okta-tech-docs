@@ -14,6 +14,7 @@
 
 - [Overview](#overview)
 - [Documentation Structure](#documentation-structure)
+- [Style Guide](#style-guide)
 - [Foundation Documentation](#foundation-documentation)
 - [Architecture Documentation](#architecture-documentation)
 - [Development Documentation](#development-documentation)
@@ -50,6 +51,16 @@ The documentation is organized into the following sections:
 4. **Integration** - API contracts and authentication/authorization
 5. **Operations** - Observability, logging, metrics, tracing, and security
 6. **Releases** - Release notes and changelog
+
+---
+
+## Style Guide
+
+The documentation follows consistent style standards for colors, icons, typography, and formatting to ensure a professional and cohesive appearance across all documents.
+
+| Document | Description | Link |
+|----------|-------------|------|
+| Style Guide | Documentation style standards including colors, icons, typography, and formatting guidelines | [style-guide-v1.md](style-guide-v1.md) |
 
 ---
 
@@ -149,6 +160,9 @@ For detailed instructions on exporting this documentation to PDF, please refer t
 ---
 
 ## Sub-pages
+
+### Style Guide
+- [Style Guide](style-guide-v1.md)
 
 ### Foundation
 - [Technical Overview](../01-foundation/technical-overview-v1.md)
