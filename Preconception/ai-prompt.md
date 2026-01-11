@@ -1,21 +1,3 @@
-## Considrations:
-
-1. Main goal: A project called "tahdir", and we want to extract the functionalities from and create another project called "Okta" with advanced tech, codes with better business methodology.
-2. Used Tech:
-    - Old Project (Tahdir):
-        - Laravel 11
-        - Livewire 3 
-        - Monlith core-embedded architecture  
-    - New Project (Okta v1):
-        - Laravel 12
-        - Livewire 4
-        - Monolithic modular architecture (Using Laravel Modular)
-    - Feature updated Project (Okta v2):
-        - Micro-services architecture
-3. 
-
-
-
 ## Prompt Context
 1. I have a project called "tahdir", and we want to extract the functionalities from and create another project called "Okta".
 2. Old project: Laravel 11 & Livewire 3 -> New Project: Laravel 12 & Livewire 4.
