@@ -1,0 +1,2 @@
+## Intent
+This document outlines the strategic and technical evolution from Tahdir to Okta, highlighting in-scope decisions for v1, future architectural directions, and key business transformation principles.
