@@ -10,24 +10,27 @@ This document outlines the strategic and technical evolution from Tahdir to Okta
 ## Tech
 ### Old Project (Tahdir)
     - Architecture: Monolith core-based architecture 
-    - Database: MySQL and Single-DB
+    - Database: MySQL with Single-DB
     - // Proposal: Cache :
     - Framework: Laravel 11
     - Frontend: Livewire 3 
-    - Messaging: Firebase
+    - Messaging: Firebase Messaging
+    - // Proposal: Style: Traditional CSS
     - Monitoring: Pulse 
-### New Project (Okta v1 - In-scope decisions)
+### New Project (Okta v1 - In-scope decisions) 
     - Architecture: Monolithic modular architecture (package: nwidart/laravel-modules)
-    - Database: PostgreSQL + Multi-DB (Each DB relates to a separated service)
+    - Database: PostgreSQL DB per Module
     - // Proposal: Cache : Redis
     - Framework: Laravel 12
-    - Frontend: Livewire 4 with React embedded
-    - Messaging: Firebase messaging
-    - Style: SaaS style
-    - // Proposal: Monitoring: Sentury.io
+    - Frontend: Livewire 4 with Embedded React
+    - Messaging: Firebase Messaging + Pusher
+    - Style: SCSS
+    - // Proposal: Monitoring: Sentry.io
     - // Proposal: Monitoring: Nightwatch
+    * With applying possible standards help to transform to microservice architecture
 ### Feature Project (Okta - Out of Scope)
-    - Architecture: Micro-services architecture
+    - Architecture: Microservices architecture
+    - Database: PostgreSQL DB per Microservice with DTOs / Contracts Layer
     - External-apps integrations (From the partnerships)
 
 
@@ -42,5 +45,10 @@ This document outlines the strategic and technical evolution from Tahdir to Okta
 ### 2. *With Partnerships:*
     - Partnerships—under the traditional partnership agreement—require manual implementation within the platform and application. → Partnerships—after submitting a request and receiving team approval—are provided with an API that enables them to build their own integrations and exchange data through a flexible permission-based access system.
 ### 3. *With System:*
-    - The system is designed with a clear separation between a reusable platform kernel and domain-specific services, allowing the kernel to function as a standalone SaaS foundation adaptable to various business domains.
+    - The system is designed with a clear separation between a reusable platform Kernel Services and Domain-specific Services, allowing the kernel to function as a standalone SaaS foundation adaptable to various business domains.
     - The visual style is developed with inspiration from the Digital Government Authority Platform Code standards, serving as a reference rather than a mandatory or full compliance framework. (كود المنصات ضمن هيئة الحكومة الرقمية). Visit: https://design.dga.gov.sa/.
+
+
+
+## Security
+- Using ulid as exposed id in each model among services and publicity.

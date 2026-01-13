@@ -1,0 +1,16 @@
+### ConductProblemGradeGroup
+- Fields:
+  - id (integer)
+  - ulid (string, unique)
+  - conduct_rules_register_id (integer)
+  - title (translatable)
+  - description (translatable, nullable)
+  - created_at (timestamp)
+  - updated_at (timestamp)
+- Relations:
+  - belongsTo conductRulesRegister (ConductRulesRegister)
+  - hasMany conductProblemGrades (ConductProblemGrade)
+- Notes:
+  - Groups conduct problem grades
+  - Part of conduct rules register structure
+  - Should stay internal to the service

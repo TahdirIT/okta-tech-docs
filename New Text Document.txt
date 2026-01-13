@@ -1,0 +1,4 @@
+أريد prompt يزيل العلاقات بين model و external modular model
+
+
+1. ضع عنوان تحت اسم ex

@@ -1,0 +1,15 @@
+### CommitteeColumn
+- Fields:
+  - id (integer)
+  - ulid (string, unique)
+  - committee_id (integer)
+  - order (integer)
+  - created_at (timestamp)
+  - updated_at (timestamp)
+- Relations:
+  - belongsTo committee (Committee)
+  - hasMany committeeTables (CommitteeTable)
+- Notes:
+  - Column within an exam committee
+  - Part of seating arrangement structure
+  - Should stay internal to the service
