@@ -5,7 +5,7 @@
 - Authorization: Role-based access control (RBAC)
 - Data Exposure: Sequential IDs exposed in URLs and APIs
 - Encryption: Basic HTTPS/TLS
-- Secrets Management: Environment variables in .env files
+- Secrets Management: Environment variables managed via GitHub Actions secrets
 - API Security: Basic API authentication
 - Input Validation: Framework-level validation
 - Security Headers: Basic security headers
