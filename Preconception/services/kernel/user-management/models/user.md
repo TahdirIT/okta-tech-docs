@@ -63,14 +63,14 @@ Reference Model
 - SchoolComplexUser Context (supervisor)
   - Required fields:
     - (via hasOne)
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Links user to school complex supervisor role
   - Access pattern: read-only
 
 - SchoolComplexUser Context
   - Required fields:
     - (via hasMany)
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Links user to school complexes
   - Access pattern: read-only
 

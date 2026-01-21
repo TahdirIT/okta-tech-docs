@@ -25,7 +25,7 @@ Reference Model
   - Required fields:
     - related_type
     - related_id
-  - Source module: location, school-management
+  - Source module: location, tenant-management
   - Usage: Links holiday schedule to a country or school
   - Access pattern: read-only
 - Notes:

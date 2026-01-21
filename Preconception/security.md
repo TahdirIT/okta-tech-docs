@@ -1,4 +1,4 @@
-## Security
+## Security (Proposal/Auto Generated)
 
 ### Old Project (Tahdir)
 - Authentication: Basic authentication mechanisms

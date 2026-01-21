@@ -22,7 +22,7 @@ Reference Model
 - School Context
   - Required fields:
     - (via employee_school pivot)
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Links employee to assigned schools
   - Access pattern: read-only
 

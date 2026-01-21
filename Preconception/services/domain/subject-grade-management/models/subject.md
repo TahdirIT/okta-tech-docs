@@ -61,14 +61,14 @@ Reference Model
 - School Context
   - Required fields:
     - school_id
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Identifies the school for which the subject is defined
   - Access pattern: read-only
 
 - School Context (via pivot)
   - Required fields:
     - (via school_subject pivot)
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Links subject to multiple schools
   - Access pattern: read-only
 - Notes:

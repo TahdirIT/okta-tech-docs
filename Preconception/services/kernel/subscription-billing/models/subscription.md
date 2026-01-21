@@ -25,7 +25,7 @@ Operational Model
   - Required fields:
     - subscriber_type
     - subscriber_id
-  - Source module: school-management, user-management
+  - Source module: tenant-management, user-management
   - Usage: Identifies the school or user that has the subscription
   - Access pattern: read-only
 - Notes:

@@ -31,14 +31,14 @@ Reference Model
 - School Context
   - Required fields:
     - (via school_student pivot)
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Links student to schools
   - Access pattern: read-only
 
 - School Context (activeSchool)
   - Required fields:
     - active_school_id
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Identifies the student's active school
   - Access pattern: read-only
 

@@ -28,7 +28,7 @@ Operational Model
 - School Context
   - Required fields:
     - school_id
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Identifies the school for which the call is made
   - Access pattern: read-only
 

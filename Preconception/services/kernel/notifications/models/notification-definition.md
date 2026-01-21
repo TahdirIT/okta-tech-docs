@@ -31,7 +31,7 @@ Reference Model
 - School Context
   - Required fields:
     - school_id
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Identifies the school for which the notification definition is defined
   - Access pattern: read-only
 - Notes:

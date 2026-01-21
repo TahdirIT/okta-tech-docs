@@ -87,7 +87,7 @@
 | `attendance-management` | ✅ ممتاز | قدرة تجارية واضحة ومستقلة |
 | `employee-management` | ✅ جيد | إدارة الموظفين ككيان مستقل |
 | `student-management` | ✅ جيد | إدارة الطلاب ككيان مستقل |
-| `school-management` | ✅ جيد | إدارة المدارس والمجمعات |
+| `tenant-management` | ✅ جيد | إدارة المدارس والمجمعات |
 | `exam-management` | ✅ جيد | عملية امتحانات متماسكة |
 | `timetable-management` | ✅ جيد | إدارة الجداول الزمنية |
 | `subject-grade-management` | ✅ جيد | إدارة المواد والدرجات |
@@ -208,7 +208,7 @@
 ### Outside the Boundary (Dependencies)
 - User data (from user-management) - read-only
 - Role definitions (from roles-permissions) - read-only
-- School data (from school-management) - read-only
+- School data (from tenant-management) - read-only
 
 ### Public API
 - createEmployee()
@@ -280,7 +280,7 @@ services/
       - student-management
       - guardian-management
     administration/ # الإدارة
-      - school-management
+      - tenant-management
       - conduct-discipline
 ```
 
@@ -310,7 +310,7 @@ services/
    - الحل: أحداهما يملك البيانات، الآخر يستخدم API/Events
 
 2. **خدمتان تعتمدان على بعضهما بشكل متزامن:**
-   - مثال: `employee-management` يعتمد على `school-management` والعكس
+   - مثال: `employee-management` يعتمد على `tenant-management` والعكس
    - الحل: إعادة تصميم أو دمج إذا كانت متلازمة
 
 3. **خدمة تملك بيانات لكن لا توجد لها عملية تجارية:**

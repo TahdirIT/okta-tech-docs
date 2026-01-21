@@ -35,7 +35,7 @@ Reference Model
 - School Context
   - Required fields:
     - (via morphToMany as subscriber)
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Links service to schools that subscribe to it
   - Access pattern: read-only
 - Notes:

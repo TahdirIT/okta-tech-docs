@@ -7,6 +7,7 @@ Reference Model
   - id (integer)
   - ulid (string, unique)
   - name (string)
+  - subdomain (string, unique, nullable)
   - avatar (string, nullable)
   - created_at (timestamp)
   - updated_at (timestamp)

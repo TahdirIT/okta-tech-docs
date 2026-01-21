@@ -34,7 +34,7 @@ Reference Model
 - School Context
   - Required fields:
     - (via transactions)
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Links coupon to schools through transactions
   - Access pattern: read-only
 - Notes:

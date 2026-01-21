@@ -26,7 +26,7 @@ Reference Model
 - School Context
   - Required fields:
     - school_id
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Identifies the school to which the section belongs
   - Access pattern: read-only
 

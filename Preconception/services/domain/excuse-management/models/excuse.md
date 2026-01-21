@@ -25,7 +25,7 @@ Operational Model
 - School Context
   - Required fields:
     - school_id
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Identifies the school for which the excuse is issued
   - Access pattern: read-only
 

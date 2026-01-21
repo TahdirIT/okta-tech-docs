@@ -21,7 +21,7 @@ Reference Model
   - Required fields:
     - owner_type
     - owner_id
-  - Source module: school-management
+  - Source module: tenant-management
   - Usage: Identifies the school or school complex that owns the device
   - Access pattern: read-only
 - Notes:

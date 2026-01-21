@@ -25,7 +25,7 @@ Operational Model
   - Required fields:
     - sender_type
     - sender_id
-  - Source module: school-management, user-management, employee-management
+  - Source module: tenant-management, user-management, employee-management
   - Usage: Identifies the sender of the notification
   - Access pattern: read-only
 

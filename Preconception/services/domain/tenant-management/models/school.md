@@ -7,6 +7,7 @@ Reference Model
   - id (integer)
   - ulid (string, unique)
   - name (string)
+  - subdomain (string, unique, nullable)
   - complex_id (integer, nullable)
   - country_id (integer)
   - city_id (integer, nullable)
