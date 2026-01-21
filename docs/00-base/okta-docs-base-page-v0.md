@@ -60,7 +60,7 @@ The documentation follows consistent style standards for colors, icons, typograp
 
 | Document | Description | Link |
 |----------|-------------|------|
-| Style Guide | Documentation style standards including colors, icons, typography, and formatting guidelines | [style-guide-v1.md](style-guide-v1.md) |
+| Style Guide | Documentation style standards including colors, icons, typography, and formatting guidelines | [style-guide-v0.md](style-guide-v0.md) |
 
 ---
 
@@ -68,9 +68,9 @@ The documentation follows consistent style standards for colors, icons, typograp
 
 | Document | Description | Link |
 |----------|-------------|------|
-| Technical Overview | High-level technical overview of the Okta product | [technical-overview-v1.md](../01-foundation/technical-overview-v1.md) |
-| Engineering Handbook | Engineering practices and guidelines | [engineering-handbook-v1.md](../01-foundation/engineering-handbook-v1.md) |
-| ADR Index | Architecture Decision Records index | [adr-index-v1.md](../01-foundation/adr-index-v1.md) |
+| Technical Overview | High-level technical overview of the Okta product | [technical-overview-v0.md](../01-foundation/technical-overview-v0.md) |
+| Engineering Handbook | Engineering practices and guidelines | [engineering-handbook-v0.md](../01-foundation/engineering-handbook-v0.md) |
+| ADR Index | Architecture Decision Records index | [adr-index-v0.md](../01-foundation/adr-index-v0.md) |
 
 ---
 
@@ -78,10 +78,10 @@ The documentation follows consistent style standards for colors, icons, typograp
 
 | Document | Description | Link |
 |----------|-------------|------|
-| System Architecture (Modular) | Modular architecture overview and design | [system-architecture-modular-v1.md](../02-architecture/system-architecture-modular-v1.md) |
-| Domain Model & Bounded Contexts | Domain-driven design models and bounded contexts | [domain-model-bounded-contexts-v1.md](../02-architecture/domain-model-bounded-contexts-v1.md) |
-| Data Architecture & ERD | Data architecture and entity relationship diagrams | [data-architecture-erd-v1.md](../02-architecture/data-architecture-erd-v1.md) |
-| Module Communication | Inter-module communication patterns and protocols | [module-communication-v1.md](../02-architecture/module-communication-v1.md) |
+| System Architecture (Modular) | Modular architecture overview and design | [system-architecture-modular-v0.md](../02-architecture/system-architecture-modular-v0.md) |
+| Domain Model & Bounded Contexts | Domain-driven design models and bounded contexts | [domain-model-bounded-contexts-v0.md](../02-architecture/domain-model-bounded-contexts-v0.md) |
+| Data Architecture & ERD | Data architecture and entity relationship diagrams | [data-architecture-erd-v0.md](../02-architecture/data-architecture-erd-v0.md) |
+| Module Communication | Inter-module communication patterns and protocols | [module-communication-v0.md](../02-architecture/module-communication-v0.md) |
 
 ---
 
@@ -89,10 +89,10 @@ The documentation follows consistent style standards for colors, icons, typograp
 
 | Document | Description | Link |
 |----------|-------------|------|
-| Local Development Setup | Instructions for setting up local development environment | [local-development-setup-v1.md](../03-development/local-development-setup-v1.md) |
-| GitHub Workflow | GitHub workflow and branching strategy | [github-workflow-v1.md](../03-development/github-workflow-v1.md) |
-| CI/CD Pipeline | Continuous Integration and Continuous Deployment pipeline | [ci-cd-pipeline-v1.md](../03-development/ci-cd-pipeline-v1.md) |
-| Testing Strategy | Testing approach, strategies, and best practices | [testing-strategy-v1.md](../03-development/testing-strategy-v1.md) |
+| Local Development Setup | Instructions for setting up local development environment | [local-development-setup-v0.md](../03-development/local-development-setup-v0.md) |
+| GitHub Workflow | GitHub workflow and branching strategy | [github-workflow-v0.md](../03-development/github-workflow-v0.md) |
+| CI/CD Pipeline | Continuous Integration and Continuous Deployment pipeline | [ci-cd-pipeline-v0.md](../03-development/ci-cd-pipeline-v0.md) |
+| Testing Strategy | Testing approach, strategies, and best practices | [testing-strategy-v0.md](../03-development/testing-strategy-v0.md) |
 
 ---
 
@@ -100,8 +100,8 @@ The documentation follows consistent style standards for colors, icons, typograp
 
 | Document | Description | Link |
 |----------|-------------|------|
-| API Contracts | API contracts and specifications | [api-contracts-v1.md](../04-integration/api-contracts-v1.md) |
-| Authentication & Authorization | Authentication, authorization, and permissions | [authn-authz-permissions-v1.md](../04-integration/authn-authz-permissions-v1.md) |
+| API Contracts | API contracts and specifications | [api-contracts-v0.md](../04-integration/api-contracts-v0.md) |
+| Authentication & Authorization | Authentication, authorization, and permissions | [authn-authz-permissions-v0.md](../04-integration/authn-authz-permissions-v0.md) |
 
 ---
 
@@ -109,8 +109,8 @@ The documentation follows consistent style standards for colors, icons, typograp
 
 | Document | Description | Link |
 |----------|-------------|------|
-| Observability | Logging, metrics, and tracing | [observability-logs-metrics-tracing-v1.md](../05-operations/observability-logs-metrics-tracing-v1.md) |
-| Security Guidelines | Security guidelines and threat model | [security-guidelines-threat-model-v1.md](../05-operations/security-guidelines-threat-model-v1.md) |
+| Observability | Logging, metrics, and tracing | [observability-logs-metrics-tracing-v0.md](../05-operations/observability-logs-metrics-tracing-v0.md) |
+| Security Guidelines | Security guidelines and threat model | [security-guidelines-threat-model-v0.md](../05-operations/security-guidelines-threat-model-v0.md) |
 
 ---
 
@@ -118,7 +118,7 @@ The documentation follows consistent style standards for colors, icons, typograp
 
 | Document | Description | Link |
 |----------|-------------|------|
-| Release Notes & Changelog | Release notes and changelog | [release-notes-changelog-v1.md](../06-releases/release-notes-changelog-v1.md) |
+| Release Notes & Changelog | Release notes and changelog | [release-notes-changelog-v0.md](../06-releases/release-notes-changelog-v0.md) |
 
 ---
 
@@ -162,33 +162,33 @@ For detailed instructions on exporting this documentation to PDF, please refer t
 ## Sub-pages
 
 ### Style Guide
-- [Style Guide](style-guide-v1.md)
+- [Style Guide](style-guide-v0.md)
 
 ### Foundation
-- [Technical Overview](../01-foundation/technical-overview-v1.md)
-- [Engineering Handbook](../01-foundation/engineering-handbook-v1.md)
-- [ADR Index](../01-foundation/adr-index-v1.md)
+- [Technical Overview](../01-foundation/technical-overview-v0.md)
+- [Engineering Handbook](../01-foundation/engineering-handbook-v0.md)
+- [ADR Index](../01-foundation/adr-index-v0.md)
 
 ### Architecture
-- [System Architecture (Modular)](../02-architecture/system-architecture-modular-v1.md)
-- [Domain Model & Bounded Contexts](../02-architecture/domain-model-bounded-contexts-v1.md)
-- [Data Architecture & ERD](../02-architecture/data-architecture-erd-v1.md)
-- [Module Communication](../02-architecture/module-communication-v1.md)
+- [System Architecture (Modular)](../02-architecture/system-architecture-modular-v0.md)
+- [Domain Model & Bounded Contexts](../02-architecture/domain-model-bounded-contexts-v0.md)
+- [Data Architecture & ERD](../02-architecture/data-architecture-erd-v0.md)
+- [Module Communication](../02-architecture/module-communication-v0.md)
 
 ### Development
-- [Local Development Setup](../03-development/local-development-setup-v1.md)
-- [GitHub Workflow](../03-development/github-workflow-v1.md)
-- [CI/CD Pipeline](../03-development/ci-cd-pipeline-v1.md)
-- [Testing Strategy](../03-development/testing-strategy-v1.md)
+- [Local Development Setup](../03-development/local-development-setup-v0.md)
+- [GitHub Workflow](../03-development/github-workflow-v0.md)
+- [CI/CD Pipeline](../03-development/ci-cd-pipeline-v0.md)
+- [Testing Strategy](../03-development/testing-strategy-v0.md)
 
 ### Integration
-- [API Contracts](../04-integration/api-contracts-v1.md)
-- [Authentication & Authorization](../04-integration/authn-authz-permissions-v1.md)
+- [API Contracts](../04-integration/api-contracts-v0.md)
+- [Authentication & Authorization](../04-integration/authn-authz-permissions-v0.md)
 
 ### Operations
-- [Observability](../05-operations/observability-logs-metrics-tracing-v1.md)
-- [Security Guidelines](../05-operations/security-guidelines-threat-model-v1.md)
+- [Observability](../05-operations/observability-logs-metrics-tracing-v0.md)
+- [Security Guidelines](../05-operations/security-guidelines-threat-model-v0.md)
 
 ### Releases
-- [Release Notes & Changelog](../06-releases/release-notes-changelog-v1.md)
+- [Release Notes & Changelog](../06-releases/release-notes-changelog-v0.md)
 

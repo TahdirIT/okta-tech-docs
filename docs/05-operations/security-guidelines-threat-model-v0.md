@@ -89,7 +89,7 @@
 
 ## Sub-pages
 
-- [Observability](observability-logs-metrics-tracing-v1.md)
-- [Authentication & Authorization](../04-integration/authn-authz-permissions-v1.md)
-- [System Architecture](../02-architecture/system-architecture-modular-v1.md)
+- [Observability](observability-logs-metrics-tracing-v0.md)
+- [Authentication & Authorization](../04-integration/authn-authz-permissions-v0.md)
+- [System Architecture](../02-architecture/system-architecture-modular-v0.md)
 

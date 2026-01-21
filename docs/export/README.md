@@ -4,7 +4,7 @@ This document provides step-by-step instructions for exporting the Okta technica
 
 ## Prerequisites
 
-- Base page: `00-base/okta-docs-base-page-v1.md`
+- Base page: `00-base/okta-docs-base-page-v0.md`
 - All referenced sub-pages and images
 
 ## Option A: Using VS Code / Markdown PDF Extension
@@ -24,7 +24,7 @@ This document provides step-by-step instructions for exporting the Okta technica
    - Configure "markdown-pdf.styles" if custom CSS is needed
 
 ### Step 3: Export Base Page
-1. Open `docs/00-base/okta-docs-base-page-v1.md`
+1. Open `docs/00-base/okta-docs-base-page-v0.md`
 2. Right-click in the editor
 3. Select "Markdown PDF: Export (pdf)"
 4. The PDF will be generated with all linked sub-pages and images
@@ -52,7 +52,7 @@ This document provides step-by-step instructions for exporting the Okta technica
 1. Navigate to the docs directory
 2. Run the following command:
    ```
-   pandoc 00-base/okta-docs-base-page-v1.md -o okta-docs-export.pdf --pdf-engine=xelatex --toc --toc-depth=3
+   pandoc 00-base/okta-docs-base-page-v0.md -o okta-docs-export.pdf --pdf-engine=xelatex --toc --toc-depth=3
    ```
 
 ### Step 4: Include Sub-pages (Advanced)

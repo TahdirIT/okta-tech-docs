@@ -89,7 +89,7 @@
 
 ## Sub-pages
 
-- [Security Guidelines](security-guidelines-threat-model-v1.md)
-- [CI/CD Pipeline](../03-development/ci-cd-pipeline-v1.md)
-- [System Architecture](../02-architecture/system-architecture-modular-v1.md)
+- [Security Guidelines](security-guidelines-threat-model-v0.md)
+- [CI/CD Pipeline](../03-development/ci-cd-pipeline-v0.md)
+- [System Architecture](../02-architecture/system-architecture-modular-v0.md)
 

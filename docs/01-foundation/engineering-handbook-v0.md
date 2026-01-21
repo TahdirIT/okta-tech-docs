@@ -87,8 +87,8 @@
 
 ## Sub-pages
 
-- [Technical Overview](technical-overview-v1.md)
-- [ADR Index](adr-index-v1.md)
-- [GitHub Workflow](../03-development/github-workflow-v1.md)
-- [Testing Strategy](../03-development/testing-strategy-v1.md)
+- [Technical Overview](technical-overview-v0.md)
+- [ADR Index](adr-index-v0.md)
+- [GitHub Workflow](../03-development/github-workflow-v0.md)
+- [Testing Strategy](../03-development/testing-strategy-v0.md)
 

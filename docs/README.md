@@ -18,10 +18,10 @@ The documentation is organized into the following sections:
 
 ## File Naming and Versioning
 
-- Files use a version suffix in the format: `-v1`, `-v2`, `-v3`, etc.
-- The first version of a document uses `-v1` suffix
+- Files use a version suffix in the format: `-v0`, `-v2`, `-v3`, etc.
+- The first version of a document uses `-v0` suffix
 - When creating a new version, increment the version number and create a new file
-- Example: `technical-overview-v1.md`, `technical-overview-v2.md`
+- Example: `technical-overview-v0.md`, `technical-overview-v2.md`
 
 ## Templates
 
@@ -38,5 +38,5 @@ See `export/README.md` for instructions on exporting documentation to PDF format
 
 ## Getting Started
 
-Start with the base page: [00-base/okta-docs-base-page-v1.md](00-base/okta-docs-base-page-v1.md)
+Start with the base page: [00-base/okta-docs-base-page-v0.md](00-base/okta-docs-base-page-v0.md)
 

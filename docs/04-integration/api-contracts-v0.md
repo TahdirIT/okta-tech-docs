@@ -88,7 +88,7 @@
 
 ## Sub-pages
 
-- [Authentication & Authorization](authn-authz-permissions-v1.md)
-- [Module Communication](../02-architecture/module-communication-v1.md)
-- [System Architecture](../02-architecture/system-architecture-modular-v1.md)
+- [Authentication & Authorization](authn-authz-permissions-v0.md)
+- [Module Communication](../02-architecture/module-communication-v0.md)
+- [System Architecture](../02-architecture/system-architecture-modular-v0.md)
 

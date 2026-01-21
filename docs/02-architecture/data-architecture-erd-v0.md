@@ -89,7 +89,7 @@
 
 ## Sub-pages
 
-- [System Architecture - Modular](system-architecture-modular-v1.md)
-- [Domain Model & Bounded Contexts](domain-model-bounded-contexts-v1.md)
-- [Module Communication](module-communication-v1.md)
+- [System Architecture - Modular](system-architecture-modular-v0.md)
+- [Domain Model & Bounded Contexts](domain-model-bounded-contexts-v0.md)
+- [Module Communication](module-communication-v0.md)
 

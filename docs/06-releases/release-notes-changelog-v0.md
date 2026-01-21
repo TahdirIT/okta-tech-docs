@@ -87,7 +87,7 @@
 
 ## Sub-pages
 
-- [CI/CD Pipeline](../03-development/ci-cd-pipeline-v1.md)
-- [GitHub Workflow](../03-development/github-workflow-v1.md)
-- [Technical Overview](../01-foundation/technical-overview-v1.md)
+- [CI/CD Pipeline](../03-development/ci-cd-pipeline-v0.md)
+- [GitHub Workflow](../03-development/github-workflow-v0.md)
+- [Technical Overview](../01-foundation/technical-overview-v0.md)
 

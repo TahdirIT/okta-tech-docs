@@ -88,8 +88,8 @@
 
 ## Sub-pages
 
-- [Local Development Setup](local-development-setup-v1.md)
-- [GitHub Workflow](github-workflow-v1.md)
-- [Testing Strategy](testing-strategy-v1.md)
-- [Observability](../05-operations/observability-logs-metrics-tracing-v1.md)
+- [Local Development Setup](local-development-setup-v0.md)
+- [GitHub Workflow](github-workflow-v0.md)
+- [Testing Strategy](testing-strategy-v0.md)
+- [Observability](../05-operations/observability-logs-metrics-tracing-v0.md)
 

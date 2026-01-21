@@ -89,7 +89,7 @@
 
 ## Sub-pages
 
-- [System Architecture - Modular](system-architecture-modular-v1.md)
-- [Domain Model & Bounded Contexts](domain-model-bounded-contexts-v1.md)
-- [API Contracts](../04-integration/api-contracts-v1.md)
+- [System Architecture - Modular](system-architecture-modular-v0.md)
+- [Domain Model & Bounded Contexts](domain-model-bounded-contexts-v0.md)
+- [API Contracts](../04-integration/api-contracts-v0.md)
 

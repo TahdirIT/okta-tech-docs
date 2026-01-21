@@ -89,8 +89,8 @@
 
 ## Sub-pages
 
-- [Domain Model & Bounded Contexts](domain-model-bounded-contexts-v1.md)
-- [Data Architecture & ERD](data-architecture-erd-v1.md)
-- [Module Communication](module-communication-v1.md)
-- [Technical Overview](../01-foundation/technical-overview-v1.md)
+- [Domain Model & Bounded Contexts](domain-model-bounded-contexts-v0.md)
+- [Data Architecture & ERD](data-architecture-erd-v0.md)
+- [Module Communication](module-communication-v0.md)
+- [Technical Overview](../01-foundation/technical-overview-v0.md)
 

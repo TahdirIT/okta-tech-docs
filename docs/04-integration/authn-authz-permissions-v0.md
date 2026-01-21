@@ -89,7 +89,7 @@
 
 ## Sub-pages
 
-- [API Contracts](api-contracts-v1.md)
-- [Security Guidelines](../05-operations/security-guidelines-threat-model-v1.md)
-- [System Architecture](../02-architecture/system-architecture-modular-v1.md)
+- [API Contracts](api-contracts-v0.md)
+- [Security Guidelines](../05-operations/security-guidelines-threat-model-v0.md)
+- [System Architecture](../02-architecture/system-architecture-modular-v0.md)
 
