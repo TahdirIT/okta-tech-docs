@@ -29,14 +29,14 @@ Reference Model
 - Role Context (primaryRoles)
   - Required fields:
     - (via employee_school pivot)
-  - Source module: roles-permissions
+  - Source module: access-control
   - Usage: Defines primary roles for employee at schools
   - Access pattern: read-only
 
 - Role Context (customRoles)
   - Required fields:
     - (via model_has_roles pivot)
-  - Source module: roles-permissions
+  - Source module: access-control
   - Usage: Defines custom roles for employee
   - Access pattern: read-only
 

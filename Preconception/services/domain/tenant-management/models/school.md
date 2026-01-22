@@ -76,7 +76,7 @@ Reference Model
 - Role Context
   - Required fields:
     - (via hasMany)
-  - Source module: roles-permissions
+  - Source module: access-control
   - Usage: Links school to role definitions
   - Access pattern: read-only
 

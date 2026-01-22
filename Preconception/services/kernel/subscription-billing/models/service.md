@@ -28,7 +28,7 @@ Reference Model
 - Permission Context
   - Required fields:
     - (via permission_service pivot)
-  - Source module: roles-permissions
+  - Source module: access-control
   - Usage: Links service to permissions for feature-based access control
   - Access pattern: read-only
 

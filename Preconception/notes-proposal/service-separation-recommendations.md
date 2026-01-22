@@ -55,7 +55,7 @@
 |--------|---------|---------|
 | `authentication-authorization` | ✅ جيد | قدرة واضحة ومستقلة |
 | `user-management` | ✅ جيد | إدارة الهويات والبيانات الأساسية |
-| `roles-permissions` | ✅ جيد | نظام الصلاحيات المركزي |
+| `access-control` | ✅ جيد | نظام الصلاحيات المركزي |
 | `subscription-billing` | ✅ جيد | إدارة الاشتراكات والمدفوعات |
 | `location` | ⚠️ محتمل | قد تكون Reference Data فقط |
 | `messaging` | ✅ جيد | قدرة اتصال مستقلة |
@@ -207,7 +207,7 @@
 
 ### Outside the Boundary (Dependencies)
 - User data (from user-management) - read-only
-- Role definitions (from roles-permissions) - read-only
+- Role definitions (from access-control) - read-only
 - School data (from tenant-management) - read-only
 
 ### Public API
@@ -258,7 +258,7 @@ services/
       - authentication-authorization
       - user-management
     access-control/ # التحكم في الوصول
-      - roles-permissions
+      - access-control
     commerce/      # التجارة والمدفوعات
       - subscription-billing
     infrastructure/ # البنية التحتية

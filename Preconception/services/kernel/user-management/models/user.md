@@ -98,7 +98,7 @@ Reference Model
 - Role Context (primaryRoles)
   - Required fields:
     - (via employee_school pivot)
-  - Source module: roles-permissions
+  - Source module: access-control
   - Usage: Links user to primary roles through employee assignments
   - Access pattern: read-only
 
