@@ -21,6 +21,7 @@
 - [Integration Documentation](#integration-documentation)
 - [Operations Documentation](#operations-documentation)
 - [Releases Documentation](#releases-documentation)
+- [Services Documentation](#services-documentation)
 - [PDF Export](#pdf-export)
 - [Sub-pages](#sub-pages)
 
@@ -51,6 +52,7 @@ The documentation is organized into the following sections:
 4. **Integration** - API contracts and authentication/authorization
 5. **Operations** - Observability, logging, metrics, tracing, and security
 6. **Releases** - Release notes and changelog
+7. **Services** - Kernel and domain services documentation
 
 ---
 
@@ -119,6 +121,17 @@ The documentation follows consistent style standards for colors, icons, typograp
 | Document | Description | Link |
 |----------|-------------|------|
 | Release Notes & Changelog | Release notes and changelog | [release-notes-changelog-v0.md](../06-releases/release-notes-changelog-v0.md) |
+
+---
+
+## Services Documentation
+
+| Document | Description | Link |
+|----------|-------------|------|
+| Services Overview | Services documentation organized by kernel and domain | [README.md](../07-services/README.md) |
+| Kernel Services | Core foundational services | [kernel/README.md](../07-services/kernel/README.md) |
+| Domain Services | Domain-specific business services | [domain/README.md](../07-services/domain/README.md) |
+| Service Template | Template for creating new service documentation | [service-template/description.md](../07-services/kernel/service-template/description.md) |
 
 ---
 
@@ -191,4 +204,10 @@ For detailed instructions on exporting this documentation to PDF, please refer t
 
 ### Releases
 - [Release Notes & Changelog](../06-releases/release-notes-changelog-v0.md)
+
+### Services
+- [Services Overview](../07-services/README.md)
+- [Kernel Services](../07-services/kernel/README.md)
+- [Domain Services](../07-services/domain/README.md)
+- [Service Template](../07-services/kernel/service-template/description.md)
 

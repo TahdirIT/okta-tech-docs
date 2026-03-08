@@ -1,42 +1,39 @@
-# Okta Technical Documentation
+# منصة أوكتا التعليمية
 
-## Overview
+## نظرة عامة
 
-This directory contains the internal technical documentation for the Okta product. The documentation is organized into logical sections and follows a versioning scheme for tracking changes over time.
+منصة أوكتا هي منصة تعليمية شاملة مصممة لإدارة المدارس والمجمعات التعليمية بكفاءة عالية. توفر المنصة مجموعة متكاملة من الخدمات التي تغطي جميع جوانب العملية التعليمية والإدارية، بدءاً من إدارة الطلاب والمعلمين وصولاً إلى التقارير والتحليلات المتقدمة.
 
-## Structure
+### الخدمات الأساسية
 
-The documentation is organized into the following sections:
+تتضمن المنصة الخدمات التالية:
 
-- **00-base/** - Base documentation page and entry point
-- **01-foundation/** - Foundational documentation (technical overview, engineering handbook, ADRs)
-- **02-architecture/** - Architecture documentation (system architecture, domain models, data architecture, module communication)
-- **03-development/** - Development documentation (local setup, GitHub workflow, CI/CD, testing)
-- **04-integration/** - Integration documentation (API contracts, authentication/authorization)
-- **05-operations/** - Operations documentation (observability, security)
-- **06-releases/** - Release documentation (release notes, changelog)
+- **إدارة المستأجرين**: إدارة المدارس والمجمعات التعليمية وإعداداتها
+- **إدارة الطلاب**: تسجيل الطلاب، التحويلات، وإدارة دورة حياة الطالب
+- **إدارة الموظفين**: إدارة المعلمين والموظفين الإداريين وأدوارهم وصلاحياتهم
+- **إدارة أولياء الأمور**: إدارة حسابات أولياء الأمور وعلاقاتهم بالطلاب
+- **إدارة الحضور والغياب**: تتبع حضور وغياب الطلاب والموظفين
+- **إدارة الفصول**: عمليات الفصول الدراسية ومتابعة الأنشطة
+- **إدارة الجدول الدراسي**: إنشاء الجداول الدراسية وتوزيع الحصص
+- **إدارة الدرجات**: تسجيل الدرجات وتوزيعها
+- **إدارة الامتحانات**: تنظيم الامتحانات واللجان الامتحانية
+- **إدارة السلوك والانضباط**: تتبع المشاكل السلوكية والإجراءات التأديبية
+- **إدارة الإجازات**: طلبات الإجازات للموظفين والطلاب
+- **إدارة النداء**: نظام استدعاء الطلاب لأولياء الأمور
+- **إدارة الأعذار**: معالجة أعذار الطلاب والموظفين
+- **إدارة الإجازات المدرسية**: جدولة الإجازات والعطل
+- **التقارير والتحليلات**: تقارير شاملة وتحليلات متقدمة لجميع المجالات
 
-## File Naming and Versioning
+## الفئات المستهدفة
 
-- Files use a version suffix in the format: `-v0`, `-v2`, `-v3`, etc.
-- The first version of a document uses `-v0` suffix
-- When creating a new version, increment the version number and create a new file
-- Example: `technical-overview-v0.md`, `technical-overview-v2.md`
+للاطلاع على تفاصيل الفئات المستهدفة، راجع [الفئات المستهدفة](target-audience.md).
 
-## Templates
+### ميزات الاشتراك
 
-Use the template file in `_templates/doc-page-template.md` when creating new documentation pages.
+- **اشتراكات مرنة**: اشتراكات سنوية أو شهرية
+- **تخصيص الخدمات**: اختيار الخدمات المطلوبة
+- **تجربة متجر التطبيقات**: تجربة اشتراك مشابهة لمتاجر التطبيقات
 
-## Assets
+## الستايل والهوية البصرية
 
-- Images and other assets are stored in `assets/images/`
-- Reference images using relative paths: `assets/images/filename.png`
-
-## Export to PDF
-
-See `export/README.md` for instructions on exporting documentation to PDF format.
-
-## Getting Started
-
-Start with the base page: [00-base/okta-docs-base-page-v0.md](00-base/okta-docs-base-page-v0.md)
-
+للاطلاع على تفاصيل معايير الهوية والتصميم، راجع [معايير الهوية والتصميم](design-standards.md).

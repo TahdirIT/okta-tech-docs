@@ -1,28 +1,24 @@
-### User
+### Profile
 
 ## Model Type
 Reference Model
 
+**Refers to User.** Profile holds user profile data for the **User** core. Access via `user.profile`; Profile belongsTo User.
+
 - Fields:
   - id (integer)
-  - ulid (string, unique)
-  - name_ar (string)
-  - name_en (string, nullable)
-  - national_id (string, nullable)
+  - user_id (integer)
   - gender (string, nullable)
-  - phone (string, nullable)
-  - phone_country_id (integer, nullable)
-  - phone_verified_at (datetime, nullable)
-  - password (hashed)
   - avatar (string, nullable)
   - nationality_id (integer, nullable)
-  - is_admin (boolean, default: false)
-  - email_verified_at (datetime, nullable)
   - birth_date (datetime, nullable)
-  - remember_token (string, nullable)
   - created_at (timestamp)
   - updated_at (timestamp)
   - deleted_at (timestamp, nullable)
+
+- Relations:
+  - belongsTo user (User) — **Refers to User**; access via `user.profile`
+
 ## External Data Dependencies
 
 - Country Context (nationality)
@@ -30,13 +26,6 @@ Reference Model
     - nationality_id
   - Source module: location
   - Usage: Identifies the user's nationality
-  - Access pattern: read-only
-
-- Country Context (phoneCountry)
-  - Required fields:
-    - phone_country_id
-  - Source module: location
-  - Usage: Identifies the country code for the user's phone number
   - Access pattern: read-only
 
 - Student Context
@@ -95,13 +84,6 @@ Reference Model
   - Usage: Links user as representative to students
   - Access pattern: read-only
 
-- Role Context (primaryRoles)
-  - Required fields:
-    - (via employee_school pivot)
-  - Source module: access-control
-  - Usage: Links user to primary roles through employee assignments
-  - Access pattern: read-only
-
 - Chat Context
   - Required fields:
     - (via chat_user pivot)
@@ -137,20 +119,17 @@ Reference Model
   - Usage: Links user to notification tokens
   - Access pattern: read-only
 
-- OTP Context
-  - Required fields:
-    - (via morphMany)
-  - Source module: authentication-authorization
-  - Usage: Links user to OTP records
-  - Access pattern: read-only
-
 - MainSubscription Context
   - Required fields:
     - (via morphMany as causer)
   - Source module: subscription-billing
   - Usage: Links user to subscription records they caused
   - Access pattern: read-only
+
 - Notes:
-  - Core user identity model - central to all account types
-  - Supports multiple account types through polymorphic relationships
-  - Should stay internal to the service as it's the foundation for all user-related operations
+  - User profile information model; **refers to User** — profile data for the User core.
+  - Contains personal and contact information (name, gender, avatar, birth_date, nationality).
+  - Supports multiple account types through polymorphic relationships.
+  - Should stay internal to the service as it's the foundation for all user-related operations.
+  - No ULID: references User via `user_id`; get ULID via `user.iam.ulid` or `profile.user.iam.ulid` when needed for external exposure.
+  - Email and phone are stored in IAM (not here) because they're authentication/identity concerns, not profile concerns.
