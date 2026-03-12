@@ -4,9 +4,10 @@
 
 تخزين المستلمين لكل إشعار (receiver polymorphic) وحالة الإرسال لكل قناة.
 
-## الأعمدة (كما في `v5website` - قابلة للتحسين على Postgres)
+## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **notification_id**: `bigint` (FK → `notifications.id`)
 - **receiver_type / receiver_id**: morphs
 - **type**: `varchar` nullable
@@ -19,11 +20,9 @@
 
 ## الفهارس/القيود (مقترح)
 
+- **unique**: (`ulid`)
 - **index**: (`notification_id`)
 - **index**: (`receiver_type`, `receiver_id`)
 - **index**: (`status`)
 
-## مقارنة مع `v5website`
-
-مطابق (مع اقتراح `jsonb` بدل `json` لـ `data`).
 

@@ -7,6 +7,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **city_id**: `bigint` (FK → `cities.id`)
 - **region_id**: `bigint` (FK → `regions.id`)
 - **name_ar**: `varchar` nullable
@@ -22,10 +23,8 @@
 
 ## الفهارس/القيود
 
+- **unique**: (`ulid`)
 - **index**: (`city_id`)
 - **index**: (`region_id`)
 
-## مقارنة مع `v5website`
-
-موجود ومطابق تقريباً (مع اقتراح `jsonb` بدلاً من `json`).
 

@@ -7,6 +7,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **title**: `jsonb` (يدعم العربية/الإنجليزية)
 - **related_type**: `varchar` (polymorphic: `App\\Models\\Country` أو `App\\Models\\School`)
 - **related_id**: `bigint`
@@ -27,6 +28,7 @@
 
 ## الفهارس/القيود
 
+- **unique**: (`ulid`)
 - **index**: (`related_type`, `related_id`)
 - **index**: (`start_at`, `end_at`)
 - (مقترح) **check**: `end_at >= start_at`
@@ -34,7 +36,4 @@
   - منطق تطبيق + استعلامات overlap
   - أو `EXCLUDE USING gist` على `daterange(start_at,end_at,'[]')` مع `related_*` (يتطلب تصميم إضافي)
 
-## مقارنة مع `v5website`
-
-موجود، لكن في `v5website` لا يظهر عمود `notification_content` في migration الأساسي (تمت إضافته لاحقاً). هنا نوثّقه كحقل أساسي لأنه مذكور في الدليل.
 

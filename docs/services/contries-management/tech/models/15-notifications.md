@@ -4,9 +4,10 @@
 
 تخزين الإشعارات المرسلة/المنشأة فعلياً (سجل الإرسال)، بينما `notification_definitions` يمثل القوالب/التعريفات.
 
-## الأعمدة (كما في `v5website` - قابلة للتحسين على Postgres)
+## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **sender_type / sender_id**: nullable morphs
 - **title**: `varchar`
 - **content**: `text`
@@ -21,11 +22,9 @@
 
 ## الفهارس/القيود (مقترح)
 
+- **unique**: (`ulid`)
 - **index**: (`status`)
 - **index**: (`created_at`)
 - **index**: (`sender_type`, `sender_id`)
 
-## مقارنة مع `v5website`
-
-مطابق (مع اقتراح استخدام `timestamptz` وفهارس إضافية).
 

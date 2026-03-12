@@ -12,6 +12,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **model_type**: `varchar`
 - **model_id**: `bigint`
 - **settings**: `jsonb`
@@ -20,12 +21,7 @@
 ## الفهارس/القيود
 
 - **unique**: (`model_type`, `model_id`)
+- **unique**: (`ulid`)
 - (اختياري) **GIN index** على `settings` لدعم queries على `settings->...`
 
-## مقارنة مع `v5website`
-
-موجود بنفس الفكرة، مع أمثلة فعلية على:
-
-- `weekdays` كقائمة أيام مع `is_active`
-- `active_term_id` كقيمة نصية داخل JSON
 

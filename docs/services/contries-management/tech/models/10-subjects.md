@@ -7,6 +7,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **country_id**: `bigint` (FK → `countries.id`)
 - **term_id**: `bigint` nullable (FK → `terms.id`) — عند الحاجة لنسخ المواد حسب الفصل
 - **slug**: `varchar` (مُعرّف ثابت للمادة)
@@ -34,20 +35,9 @@
 ## الفهارس/القيود
 
 - **unique**: (`country_id`, `term_id`, `slug`)
+- **unique**: (`ulid`)
 - **index**: (`country_id`)
 - **index**: (`term_id`)
 - **index**: (`parent_subject_id`)
 
-## مقارنة مع `v5website`
-
-في `v5website`:
-
-- `subjects.term_id` إلزامي
-- يوجد `group_level_id` و `school_id` (override) و `country_id`
-- يوجد self-reference `subject_id`
-
-المقترح هنا:
-
-- جعل الموضوع “مرجعي” على مستوى الدولة، واعتبار `term_id` اختياريًا حسب الحاجة.
-- ربط المواد بـ `education_levels`/`education_level_groups` بدل الاعتماد على `group_level` المدرسي.
 

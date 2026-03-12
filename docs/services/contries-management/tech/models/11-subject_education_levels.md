@@ -15,8 +15,4 @@
 - **primary key**: (`subject_id`, `education_level_id`)
 - **index**: (`education_level_id`)
 
-## مقارنة مع `v5website`
-
-في `v5website` ربط المواد بالمستويات يتم عبر `group_level_id` (ومفهوم stages مرتبط بالمدرسة).
-المقترح هنا يجعل الربط “دولياً/مرجعياً” وأسهل لإعادة الاستخدام.
 

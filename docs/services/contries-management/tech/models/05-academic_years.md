@@ -7,6 +7,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **country_id**: `bigint` (FK → `countries.id`)
 - **name_ar**: `varchar` (يفضل non-null)
 - **name_en**: `varchar` nullable
@@ -24,11 +25,9 @@
 
 ## الفهارس/القيود
 
+- **unique**: (`ulid`)
 - **index**: (`country_id`)
 - (مقترح) **check**: `end_date >= start_date`
 - (مقترح) منع وجود أكثر من `is_active=true` لكل دولة (عبر منطق التطبيق أو partial unique index في Postgres)
 
-## مقارنة مع `v5website`
-
-موجود ومطابق تقريباً.
 

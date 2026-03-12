@@ -15,7 +15,4 @@
 - **primary key**: (`education_level_group_id`, `education_level_id`)
 - **index**: (`education_level_id`)
 
-## مقارنة مع `v5website`
-
-الفكرة موجودة ضمنياً عبر `group_level` وعلاقات stages، لكن المقترح هنا أوضح لخدمة “إدارة الدول”.
 

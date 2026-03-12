@@ -7,6 +7,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **country_id**: `bigint` nullable (FK → `countries.id`, `nullOnDelete`)
 - **school_id**: `bigint` nullable (FK → `schools.id`, `nullOnDelete`) — خارج نطاق خدمة إدارة الدول لكن مستخدم للـ override
 - **slug**: `varchar` (صيغة: `groupSlug.definitionSlug`)
@@ -21,11 +22,8 @@
 ## الفهارس/القيود
 
 - **unique**: (`country_id`, `school_id`, `slug`)
+- **unique**: (`ulid`)
 - **index**: (`country_id`)
 - **index**: (`school_id`)
 
-## مقارنة مع `v5website`
-
-موجود: (`country_id`, `school_id`, `slug`, `group_name`, `title`, `content`) مع unique مركّب.
-الزيادة المقترحة: `variables` وحالات القنوات بشكل صريح (لأن الدليل يذكر forced/active/inactive).
 

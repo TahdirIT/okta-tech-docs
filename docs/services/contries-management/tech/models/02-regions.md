@@ -7,6 +7,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **country_id**: `bigint` (FK → `countries.id`)
 - **capital_city_id**: `bigint` nullable (مرجع منطقي لمدينة العاصمة إن لزم)
 - **name_ar**: `varchar` nullable
@@ -28,11 +29,8 @@
 
 ## الفهارس/القيود
 
+- **unique**: (`ulid`)
 - **index**: (`country_id`)
 - (اختياري) **unique**: (`country_id`, `code`)
 
-## مقارنة مع `v5website`
-
-موجود: `country_id`, `capital_city_id`, `code`, `center`, `boundaries`, `population` + حقول الاسم والترجمة.
-الزيادة المقترحة: `national_id`.
 

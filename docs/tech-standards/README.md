@@ -4,5 +4,6 @@
 
 ## الفهرس
 
+- [معايير الهوية والتصميم (Design Standards)](./design-standards.md)
 - [معيار تسمية أكواد الصلاحيات (Permissions Naming)](./permissions-naming.md)
 

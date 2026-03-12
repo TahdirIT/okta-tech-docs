@@ -4,11 +4,12 @@
 
 تمثيل المستويات/الصفوف الدراسية المرجعية على مستوى الدولة (مثل: KG-1, Grade 1…)، بدل ربطها مباشرةً بالمدرسة.
 
-> هذا يعالج الفجوة بين الدليل (يتحدث عن تعريف المراحل لكل دولة) وبين `v5website` (الذي يربط `stages` بـ `school_id`).
+> هذا يعالج الفجوة بين الدليل (يتحدث عن تعريف المراحل لكل دولة) وبين الربط المباشر بالمراحل على مستوى المدرسة.
 
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **country_id**: `bigint` (FK → `countries.id`)
 - **code**: `varchar` nullable (مثل: `KG-1`, `G1`)
 - **name**: `jsonb` (مقترح بدل `name_ar/name_en` — أو يمكن الإبقاء عليهم)
@@ -27,12 +28,9 @@
 
 ## الفهارس/القيود
 
+- **unique**: (`ulid`)
 - **index**: (`country_id`)
 - (اختياري) **unique**: (`country_id`, `code`)
 - (اختياري) **check**: `min_age <= max_age`
 
-## مقارنة مع `v5website`
-
-- في `v5website`: يوجد `stages` مرتبط بـ `schools` و `group_level`.
-- المقترح هنا: `education_levels` كمرجع دولة، ثم المدرسة تستهلكه/تعمل override في نطاق آخر إذا لزم.
 

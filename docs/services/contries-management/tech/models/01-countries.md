@@ -7,6 +7,7 @@
 ## الأعمدة (مقترح Laravel 12 + PostgreSQL)
 
 - **id**: `bigint` (PK)
+- **ulid**: `char(26)` unique (ULID للاستخدام في APIs العامة)
 - **name_ar**: `varchar` nullable
 - **name_en**: `varchar` nullable
 - **name_json**: `jsonb` nullable (للدعم متعدد اللغات عند الحاجة)
@@ -31,9 +32,7 @@
 ## الفهارس/القيود
 
 - **unique**: (`code`) إن كانت مطلوبة كقيمة فريدة
+- **unique**: (`ulid`)
 - **index**: (`active`)
 
-## مقارنة مع `v5website`
-
-مطابق تقريباً: نفس الأعمدة الأساسية مع وجود `name_json` و `active` و soft deletes.
 
