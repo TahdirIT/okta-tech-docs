@@ -10,7 +10,6 @@
 - [إدارة المواد](./04-subjects-management-ux.md)
 - [إدارة الأعوام الدراسية](./05-academic-years-ux.md)
 - [إدارة تعريفات الإشعارات](./06-notifications-ux.md)
-- [قواعد السلوك والمواظبة](./07-conduct-rules-ux.md)
 - [إعدادات الأسبوع](./08-weekdays-settings-ux.md)
 - [إدارة المناطق](./09-regions-management-ux.md)
 

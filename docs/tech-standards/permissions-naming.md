@@ -28,9 +28,9 @@
 
 عند وجود كلمات متعددة داخل نفس الجزء:
 
-- ✅ `conduct_rules`
 - ✅ `academic_years`
 - ✅ `country_data`
+- ✅ `weekdays_settings`
 
 > ملاحظة: هذا متوافق مع أنماط شائعة في الكود مثل استخدام `Str::snake()` لتوليد أسماء الموارد.
 
@@ -40,18 +40,18 @@
 
 ### مثال: إدارة الدول
 
-- ✅ `countries_management.conduct_rules.view`
 - ✅ `countries_management.academic_years.terms.set_active`
+- ✅ `countries_management.weekdays_settings.update`
 
 ### أمثلة خاطئة (مرفوضة)
 
-- ❌ `countries_management.conduct-rules.view`  
+- ❌ `countries_management.weekdays-settings.update`  
   السبب: استخدام `-` داخل `resource` غير متوافق مع معيار **dot-separated + lowercase** ولا مع نمط `snake_case`.
 
-- ❌ `CountriesManagement.conduct_rules.view`  
+- ❌ `CountriesManagement.weekdays_settings.update`  
   السبب: يجب أن تكون **lowercase بالكامل**.
 
-- ❌ `countries_management.conduct_rules.*`  
+- ❌ `countries_management.weekdays_settings.*`  
   السبب: **Wildcards غير مسموحة**.
 
 ---

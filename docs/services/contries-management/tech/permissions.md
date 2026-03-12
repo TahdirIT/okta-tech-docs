@@ -148,70 +148,7 @@
 
 ---
 
-## 7. قواعد السلوك والمواظبة (Conduct Rules)
-
-### الصلاحيات
-
-- `countries_management.conduct_rules.view` - عرض قواعد السلوك والمواظبة
-- `countries_management.conduct_rules.create` - إنشاء سجل قواعد جديد
-- `countries_management.conduct_rules.update` - تعديل سجل قواعد
-- `countries_management.conduct_rules.delete` - حذف سجل قواعد
-
-### مجموعات الدرجات (Conduct Problem Grade Groups)
-
-- `countries_management.conduct_rules.grade_groups.view` - عرض مجموعات الدرجات
-- `countries_management.conduct_rules.grade_groups.create` - إنشاء مجموعة درجات جديدة
-- `countries_management.conduct_rules.grade_groups.update` - تعديل مجموعة درجات
-- `countries_management.conduct_rules.grade_groups.delete` - حذف مجموعة درجات
-
-### درجات المشكلات (Conduct Problem Grades)
-
-- `countries_management.conduct_rules.problem_grades.view` - عرض درجات المشكلات
-- `countries_management.conduct_rules.problem_grades.create` - إنشاء درجة مشكلة جديدة
-- `countries_management.conduct_rules.problem_grades.update` - تعديل درجة مشكلة
-- `countries_management.conduct_rules.problem_grades.delete` - حذف درجة مشكلة
-
-### المشكلات السلوكية (Conduct Problems)
-
-- `countries_management.conduct_rules.problems.view` - عرض المشكلات السلوكية
-- `countries_management.conduct_rules.problems.create` - إنشاء مشكلة سلوكية جديدة
-- `countries_management.conduct_rules.problems.update` - تعديل مشكلة سلوكية
-- `countries_management.conduct_rules.problems.delete` - حذف مشكلة سلوكية
-- `countries_management.conduct_rules.problems.assign_grade` - ربط المشكلة بدرجة
-
-### الإجراءات التربوية (Conduct Educational Procedures)
-
-- `countries_management.conduct_rules.procedures.view` - عرض الإجراءات التربوية
-- `countries_management.conduct_rules.procedures.create` - إنشاء إجراء تربوي جديد
-- `countries_management.conduct_rules.procedures.update` - تعديل إجراء تربوي
-- `countries_management.conduct_rules.procedures.delete` - حذف إجراء تربوي
-- `countries_management.conduct_rules.procedures.assign_grade` - ربط الإجراء بدرجة
-
-### قواعد الغياب (Absence Rules)
-
-- `countries_management.conduct_rules.absence_rules.view` - عرض قواعد الغياب
-- `countries_management.conduct_rules.absence_rules.create` - إنشاء قاعدة غياب جديدة
-- `countries_management.conduct_rules.absence_rules.update` - تعديل قاعدة غياب
-- `countries_management.conduct_rules.absence_rules.delete` - حذف قاعدة غياب
-
-### إجراءات الغياب (Absence Procedures)
-
-- `countries_management.conduct_rules.absence_procedures.view` - عرض إجراءات الغياب
-- `countries_management.conduct_rules.absence_procedures.create` - إنشاء إجراء غياب جديد
-- `countries_management.conduct_rules.absence_procedures.update` - تعديل إجراء غياب
-- `countries_management.conduct_rules.absence_procedures.delete` - حذف إجراء غياب
-- `countries_management.conduct_rules.absence_procedures.assign_rule` - ربط الإجراء بقاعدة غياب
-
-### القواعد
-
-- يجب التحقق من عدم تكرار اسم السجل داخل نفس الدولة
-- يجب التحقق من صحة ربط المشكلات والإجراءات بالدرجات المناسبة
-- يجب التحقق من صحة شروط قواعد الغياب (مثل عدد الأيام)
-- لا يمكن حذف قاعدة أو إجراء مرتبط بسجلات سلوكية فعلية
-
----
-
-## 8. إعدادات الأسبوع (Weekdays Settings)
+## 7. إعدادات الأسبوع (Weekdays Settings)
 
 ### الصلاحيات
 
@@ -226,7 +163,7 @@
 
 ---
 
-## 9. إدارة المناطق (Regions Management)
+## 8. إدارة المناطق (Regions Management)
 
 ### الصلاحيات
 
