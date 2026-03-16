@@ -2,57 +2,64 @@
 
 ## الغرض
 
-تعريف الصلاحيات المرجعية المستخدمة في نظام التحكم في الوصول (RBAC). الصلاحيات تُدار بشكل منفصل عن الأدوار ويمكن ربطها بعدة أدوار.
+تعريف الصلاحيات في النظام. كل صلاحية تمثل إجراءاً محدداً يمكن للمستخدم تنفيذه.
 
-## النموذج
+> **ملاحظة مهمة:** هذا الجدول يعتمد على حزمة `spatie/laravel-permission` التي توفر البنية الأساسية. يتم إضافة الحقول الإضافية المطلوبة للمشروع.
 
-```php
-App\Models\Permission extends Spatie\Permission\Models\Permission
-```
+## الحزمة المستخدمة
 
-## الجدول الأساسي (من البكج)
+**`spatie/laravel-permission`** - حزمة Laravel شائعة لإدارة الصلاحيات والأدوار.
 
-جدول `permissions` مأخوذ مباشرة من البكج `spatie/laravel-permission`:
+### الأعمدة من الحزمة
 
-| الحقل | النوع | الوصف |
-|------|------|-------|
-| `id` | `bigint` (PK, auto increment) | المعرف الأساسي |
-| `name` | `varchar(255)` | اسم الصلاحية (مثل: `manage-users`) |
-| `guard_name` | `varchar(255)` | الحارس المستخدم (افتراضياً `web`) |
-| `created_at` | `timestamp` (nullable) | تاريخ الإنشاء |
-| `updated_at` | `timestamp` (nullable) | تاريخ التحديث |
+- **id**: `bigint` (PK)
+- **name**: `varchar` (اسم الصلاحية، مثل: `users.create`, `settings.permissions.view`)
+- **guard_name**: `varchar` (الحارس، عادة `web`)
+- **created_at** / **updated_at**: `timestamptz`
 
-**ملاحظة:** هذا الجدول مأخوذ مباشرة من البكج `spatie/laravel-permission`.
+### الأعمدة الإضافية المضافة للمشروع
 
-## الحقول
-
-### الحقول الأساسية (من Spatie Package)
-
-- **id**: `bigint` (PK, auto increment)
-- **name**: `varchar(255)` (اسم الصلاحية، مثل: `manage-users`)
-- **guard_name**: `varchar(255)` (الحارس المستخدم، افتراضياً `web`)
-- **created_at / updated_at**: `timestamp` (nullable)
-
-### الحقول الإضافية
-
-- **scope**: `varchar(255)` (النطاق: `tenant` أو `system`)
-  - `tenant`: صلاحية خاصة بالمستأجر
-  - `system`: صلاحية على مستوى النظام
+- **scope**: `varchar` (`system` | `tenant`) - نطاق الصلاحية
+- **tenant_id**: `bigint` nullable (FK إلى `tenants`) - للمستأجر المرتبط بالصلاحية
+- **title_ar**: `varchar` nullable - عنوان الصلاحية بالعربية للعرض
+- **title_en**: `varchar` nullable - عنوان الصلاحية بالإنجليزية للعرض
 - **deleted_at**: `timestamptz` nullable (Soft Deletes)
 
 ## العلاقات
 
-- **belongsToMany**: `roles` (via `role_has_permissions`)
-- **morphToMany**: `users` (via `model_has_permissions`)
+- **belongsTo**: `Tenant` (via `tenant_id`)
+- **belongsToMany**: `Role` (via `role_has_permissions`)
+- **morphToMany**: `User` (via `model_has_permissions`)
 
 ## الفهارس/القيود
 
-### من البكج الأساسي
-- **unique**: (`name`, `guard_name`) - من migration `create_permission_tables.php.stub`
-
-### من Migrations الإضافية
-- **unique**: (`name`, `guard_name`, `scope`) - تم تعديل unique constraint ليشمل `scope`
+- **unique**: (`name`, `guard_name`, `scope`, `tenant_id`) - يضمن عدم تكرار الصلاحية في نفس النطاق والمستأجر
 - **index**: (`scope`)
+- **index**: (`tenant_id`)
+- **index**: (`deleted_at`)
+
+## القواعد
+
+### قواعد التحقق
+
+1. **اسم الصلاحية:**
+   - مطلوب
+   - يجب أن يكون فريداً ضمن نفس النطاق والمستأجر
+   - الحد الأقصى للطول: 120 حرف
+
+2. **النطاق:**
+   - مطلوب
+   - يجب أن يكون `system` أو `tenant`
+
+3. **المستأجر:**
+   - للصلاحيات على مستوى المستأجر: مطلوب
+   - للصلاحيات على مستوى النظام: يجب أن يكون `null`
+
+### القيود
+
+- الصلاحيات على مستوى النظام لا يمكن ربطها بمستأجر
+- الصلاحيات على مستوى المستأجر يجب أن تكون مرتبطة بمستأجر
+- لا يمكن حذف صلاحية مرتبطة بدور نشط (Soft Delete)
 
 ## الاستخدام
 
@@ -61,64 +68,50 @@ App\Models\Permission extends Spatie\Permission\Models\Permission
 ```php
 use App\Models\Permission;
 
+// صلاحية على مستوى النظام
 Permission::create([
-    'name' => 'manage-users',
+    'name' => 'users.create',
+    'guard_name' => 'web',
+    'scope' => 'system',
+    'tenant_id' => null,
+    'title_ar' => 'إنشاء مستخدم',
+    'title_en' => 'Create User',
+]);
+
+// صلاحية على مستوى المستأجر
+Permission::create([
+    'name' => 'students.view',
     'guard_name' => 'web',
     'scope' => 'tenant',
+    'tenant_id' => $tenantId,
+    'title_ar' => 'عرض الطلاب',
+    'title_en' => 'View Students',
 ]);
 ```
 
-### البحث عن صلاحيات
+### الاستعلام عن الصلاحيات
 
 ```php
-// جميع الصلاحيات
-Permission::all();
+// جميع الصلاحيات على مستوى النظام
+$systemPermissions = Permission::where('scope', 'system')->get();
 
-// صلاحيات نطاق معين
-Permission::where('scope', 'system')->get();
-
-// صلاحية محددة
-Permission::where('name', 'manage-users')->first();
-```
-
-### ربط صلاحية بدور
-
-```php
-$role->givePermissionTo('manage-users');
-$role->syncPermissions(['manage-users', 'view-reports']);
+// جميع الصلاحيات على مستوى المستأجر
+$tenantPermissions = Permission::where('scope', 'tenant')
+    ->where('tenant_id', $tenantId)
+    ->get();
 ```
 
 ### التحقق من الصلاحية
 
 ```php
-$user->hasPermissionTo('manage-users');
-$user->can('manage-users');
+// في Controller أو Middleware
+if ($user->hasPermissionTo('users.create')) {
+    // المستخدم لديه الصلاحية
+}
 ```
 
-## المقارنة مع البكج الأساسي
+## التكامل مع spatie/laravel-permission
 
-النموذج المخصص `App\Models\Permission` يمتد من `Spatie\Permission\Models\Permission` ويضيف الحقول التالية:
-
-### الحقول الإضافية المضافة
-
-| الحقل | النوع | الوصف |
-|------|------|-------|
-| `scope` | `varchar(255)` | النطاق: `tenant` أو `system` |
-| `deleted_at` | `timestamptz` nullable | Soft Deletes |
-
-### جدول المقارنة
-
-| الميزة | البكج الأساسي | النموذج المخصص |
-|--------|---------------|----------------|
-| الحقول الأساسية | `id`, `name`, `guard_name`, `created_at`, `updated_at` | نفس الحقول + `scope`, `deleted_at` |
-| العلاقات | `belongsToMany: roles`, `morphToMany: users` | نفس العلاقات |
-| الفهارس | `unique: (name, guard_name)` | `unique: (name, guard_name, scope)` |
-| Soft Deletes | غير مدعوم | مدعوم |
-
-## ملاحظات
-
-- الصلاحيات تُستخدم كمرجع في النظام
-- يمكن اكتشاف الصلاحيات المستخدمة في الكود عبر `RbacDiscoveryService`
-- الصلاحيات على مستوى النظام (`system`) متاحة لجميع المستأجرين
-- الصلاحيات على مستوى المستأجر (`tenant`) خاصة بكل مستأجر
-- الجدول الأساسي مأخوذ من البكج `spatie/laravel-permission`
+- يستخدم النموذج `Spatie\Permission\Models\Permission` كأساس
+- يتم تخصيص النموذج عبر `App\Models\Permission`
+- يتم استخدام ميزة Teams في الحزمة لتمثيل المستأجرين (عند تفعيلها)

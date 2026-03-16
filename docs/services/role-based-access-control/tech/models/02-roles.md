@@ -2,62 +2,90 @@
 
 ## الغرض
 
-تعريف الأدوار المرجعية المستخدمة في نظام التحكم في الوصول (RBAC). الأدوار تُدار بشكل منفصل عن الصلاحيات ويمكن ربطها بعدة صلاحيات.
+تعريف الأدوار في النظام. كل دور يمثل مجموعة من الصلاحيات المرتبطة به.
 
-## النموذج
+> **ملاحظة مهمة:** هذا الجدول يعتمد على حزمة `spatie/laravel-permission` التي توفر البنية الأساسية. يتم إضافة الحقول الإضافية المطلوبة للمشروع.
 
-```php
-App\Models\Role extends Spatie\Permission\Models\Role
-```
+## الحزمة المستخدمة
 
-## الجدول الأساسي (من البكج)
+**`spatie/laravel-permission`** - حزمة Laravel شائعة لإدارة الصلاحيات والأدوار.
 
-جدول `roles` مأخوذ مباشرة من البكج `spatie/laravel-permission`:
+### الأعمدة من الحزمة
 
-| الحقل | النوع | الوصف |
-|------|------|-------|
-| `id` | `bigint` (PK, auto increment) | المعرف الأساسي |
-| `name` | `varchar(255)` | اسم الدور (مثل: `platform-admin`) |
-| `guard_name` | `varchar(255)` | الحارس المستخدم (افتراضياً `web`) |
-| `created_at` | `timestamp` (nullable) | تاريخ الإنشاء |
-| `updated_at` | `timestamp` (nullable) | تاريخ التحديث |
+- **id**: `bigint` (PK)
+- **name**: `varchar` (اسم الدور، مثل: `superadmin`, `admin`, `teacher`)
+- **guard_name**: `varchar` (الحارس، عادة `web`)
+- **team_id**: `bigint` nullable (من ميزة Teams في الحزمة - يمثل `tenant_id`)
+- **created_at** / **updated_at**: `timestamptz`
 
-**ملاحظة:** هذا الجدول مأخوذ مباشرة من البكج `spatie/laravel-permission`.
+### الأعمدة الإضافية المضافة للمشروع
 
-## الحقول
-
-### الحقول الأساسية (من Spatie Package)
-
-- **id**: `bigint` (PK, auto increment)
-- **name**: `varchar(255)` (اسم الدور، مثل: `platform-admin`)
-- **guard_name**: `varchar(255)` (الحارس المستخدم، افتراضياً `web`)
-- **created_at / updated_at**: `timestamp` (nullable)
-
-### الحقول الإضافية
-
-- **tenant_id**: `bigint` nullable (FK إلى `tenants`)
-  - يمكن ربط الدور بمستأجر محدد
-  - `null` يعني دور عام
-- **scope**: `varchar(255)` (النطاق: `tenant` أو `system`)
-  - `tenant`: دور خاص بالمستأجر
-  - `system`: دور على مستوى النظام
+- **scope**: `varchar` (`system` | `tenant`) - نطاق الدور
+- **tenant_id**: `bigint` nullable (FK إلى `tenants`) - للمستأجر المرتبط بالدور
+- **title_ar**: `varchar` nullable - عنوان الدور بالعربية للعرض
+- **title_en**: `varchar` nullable - عنوان الدور بالإنجليزية للعرض
 - **deleted_at**: `timestamptz` nullable (Soft Deletes)
 
 ## العلاقات
 
-- **belongsTo**: `tenant` (optional)
-- **belongsToMany**: `permissions` (via `role_has_permissions`)
-- **morphToMany**: `users` (via `model_has_roles`)
+- **belongsTo**: `Tenant` (via `tenant_id`)
+- **belongsToMany**: `Permission` (via `role_has_permissions`)
+- **morphToMany**: `User` (via `model_has_roles`) - للأدوار (على مستوى النظام والمستأجر)
 
 ## الفهارس/القيود
 
-### من البكج الأساسي
-- **unique**: (`name`, `guard_name`) - من migration `create_permission_tables.php.stub`
-
-### من Migrations الإضافية
-- **unique**: (`tenant_id`, `name`, `guard_name`) - تم تعديل unique constraint ليشمل `tenant_id`
-- **foreign key**: (`tenant_id`) → `tenants.id` (cascade on delete)
+- **unique**: (`tenant_id`, `name`, `guard_name`) - يضمن عدم تكرار الدور في نفس المستأجر
 - **index**: (`scope`)
+- **index**: (`tenant_id`)
+- **index**: (`deleted_at`)
+
+## القواعد
+
+### قواعد التحقق
+
+1. **اسم الدور:**
+   - مطلوب
+   - يجب أن يكون فريداً ضمن نفس المستأجر
+   - الحد الأقصى للطول: 120 حرف
+
+2. **النطاق:**
+   - مطلوب
+   - يجب أن يكون `system` أو `tenant`
+
+3. **المستأجر:**
+   - للأدوار على مستوى المستأجر: مطلوب
+   - للأدوار على مستوى النظام: يجب أن يكون `null`
+
+### القيود
+
+- الأدوار على مستوى النظام لا يمكن ربطها بمستأجر
+- الأدوار على مستوى المستأجر يجب أن تكون مرتبطة بمستأجر
+- لا يمكن حذف الأدوار الثابتة (`superadmin`, `admin`, `teacher`, `student`)
+- لا يمكن حذف دور مرتبط بمستخدمين (Soft Delete)
+
+## الأدوار الثابتة
+
+### على مستوى النظام
+
+- **superadmin**: المدير العام للنظام
+  - لا يمكن حذفه
+  - يمكن تعديل صلاحياته
+  - يمكن إضافة أدوار جديدة على مستوى النظام من قبل المستخدم الذي لديه هذا الدور
+
+### على مستوى المستأجر
+
+- **admin**: مالك حساب المستأجر
+  - لا يمكن حذفه
+  - يمكن تعديل صلاحياته
+  - يمكن إضافة أدوار جديدة على مستوى المستأجر من قبل المستخدم الذي لديه هذا الدور
+
+- **teacher**: المعلم
+  - لا يمكن حذفه
+  - يمكن تعديل صلاحياته
+
+- **student**: الطالب
+  - لا يمكن حذفه
+  - يمكن تعديل صلاحياته
 
 ## الاستخدام
 
@@ -66,83 +94,69 @@ App\Models\Role extends Spatie\Permission\Models\Role
 ```php
 use App\Models\Role;
 
-Role::create([
-    'name' => 'platform-admin',
+// دور على مستوى النظام
+$role = Role::create([
+    'name' => 'content-manager',
     'guard_name' => 'web',
     'scope' => 'system',
     'tenant_id' => null,
+    'title_ar' => 'مدير المحتوى',
+    'title_en' => 'Content Manager',
+]);
+
+// ربط الصلاحيات بالدور
+$role->permissions()->sync([$permission1->id, $permission2->id]);
+
+// دور على مستوى المستأجر
+$role = Role::create([
+    'name' => 'assistant-teacher',
+    'guard_name' => 'web',
+    'scope' => 'tenant',
+    'tenant_id' => $tenantId,
+    'title_ar' => 'معلم مساعد',
+    'title_en' => 'Assistant Teacher',
 ]);
 ```
 
-### البحث عن أدوار
+### الاستعلام عن الأدوار
 
 ```php
-// جميع الأدوار
-Role::all();
+// جميع الأدوار على مستوى النظام
+$systemRoles = Role::where('scope', 'system')->get();
 
-// أدوار نطاق معين
-Role::where('scope', 'system')->get();
+// جميع الأدوار على مستوى المستأجر
+$tenantRoles = Role::where('scope', 'tenant')
+    ->where('tenant_id', $tenantId)
+    ->get();
 
-// دور مرتبط بمستأجر
-Role::where('tenant_id', $tenantId)->get();
-
-// دور محدد
-Role::where('name', 'platform-admin')->first();
-```
-
-### ربط صلاحيات بدور
-
-```php
-$role->givePermissionTo('manage-users');
-$role->syncPermissions(['manage-users', 'view-reports']);
-
-// أو عبر العلاقة
-$role->permissions()->attach($permissionId);
-$role->permissions()->sync([$permissionId1, $permissionId2]);
+// الأدوار مع الصلاحيات
+$rolesWithPermissions = Role::with('permissions')->get();
 ```
 
 ### تعيين دور لمستخدم
 
 ```php
-$user->assignRole('platform-admin');
-$user->syncRoles(['admin', 'manager']);
-$user->removeRole('guest');
+// على مستوى النظام
+$user->assignRole('superadmin');
+// أو مع تحديد tenant_id صريح
+$user->roles()->attach($roleId, ['tenant_id' => null]);
+
+// على مستوى المستأجر
+$user->roles()->attach($roleId, ['tenant_id' => $tenantId]);
 ```
 
 ### التحقق من الدور
 
 ```php
-$user->hasRole('platform-admin');
-$user->hasAnyRole(['admin', 'manager']);
+// في Controller أو Middleware
+if ($user->hasRole('superadmin')) {
+    // المستخدم لديه الدور
+}
 ```
 
-## المقارنة مع البكج الأساسي
+## التكامل مع spatie/laravel-permission
 
-النموذج المخصص `App\Models\Role` يمتد من `Spatie\Permission\Models\Role` ويضيف الحقول التالية:
-
-### الحقول الإضافية المضافة
-
-| الحقل | النوع | الوصف |
-|------|------|-------|
-| `tenant_id` | `bigint` nullable | FK إلى `tenants` |
-| `scope` | `varchar(255)` | النطاق: `tenant` أو `system` |
-| `deleted_at` | `timestamptz` nullable | Soft Deletes |
-
-### جدول المقارنة
-
-| الميزة | البكج الأساسي | النموذج المخصص |
-|--------|---------------|----------------|
-| الحقول الأساسية | `id`, `name`, `guard_name`, `created_at`, `updated_at` | نفس الحقول + `tenant_id`, `scope`, `deleted_at` |
-| العلاقات | `belongsToMany: permissions`, `morphToMany: users` | نفس العلاقات + `belongsTo: tenant` |
-| الفهارس | `unique: (name, guard_name)` | `unique: (tenant_id, name, guard_name)` |
-| Soft Deletes | غير مدعوم | مدعوم |
-| Multi-tenancy | غير مدعوم | مدعوم عبر `tenant_id` |
-
-## ملاحظات
-
-- الأدوار تُستخدم كمرجع في النظام
-- يمكن اكتشاف الأدوار المستخدمة في الكود عبر `RbacDiscoveryService`
-- الأدوار على مستوى النظام (`system`) متاحة لجميع المستأجرين
-- الأدوار على مستوى المستأجر (`tenant`) خاصة بكل مستأجر
-- يمكن ربط دور بعدة صلاحيات، مما يوفر مرونة في تنظيم الوصول
-- الجدول الأساسي مأخوذ من البكج `spatie/laravel-permission`
+- يستخدم النموذج `Spatie\Permission\Models\Role` كأساس
+- يتم تخصيص النموذج عبر `App\Models\Role`
+- يتم استخدام ميزة Teams في الحزمة لتمثيل المستأجرين (عند تفعيلها)
+- يتم ربط الأدوار على مستوى المستأجر عبر جدول `model_has_roles` مع تحديد `tenant_id`
