@@ -4,14 +4,15 @@
 
 ## الملفات
 
-- [بيانات الدولة](./01-country-data-ux.md)
-- [إدارة المراحل](./02-stages-management-ux.md)
-- [التقويم](./03-calendar-ux.md)
-- [إدارة المواد](./04-subjects-management-ux.md)
-- [إدارة الأعوام الدراسية](./05-academic-years-ux.md)
-- [إدارة تعريفات الإشعارات](./06-notifications-ux.md)
-- [إعدادات الأسبوع](./08-weekdays-settings-ux.md)
-- [إدارة المناطق](./09-regions-management-ux.md)
+- [بيانات الدولة](./country-data-ux.md)
+- [إدارة المراحل](./stages-management-ux.md)
+- [التقويم](./calendar-ux.md)
+- [إدارة المواد](./subjects-management-ux.md)
+- [إدارة الأعوام الدراسية](./academic-years-ux.md)
+- [إدارة تعريفات الإشعارات](./notifications-ux.md)
+- [تخصيصات تسجيل الكيان](./entity-registration-customizations-ux.md)
+- [إعدادات الأسبوع](./weekdays-settings-ux.md)
+- [إدارة المناطق](./regions-management-ux.md)
 
 ## هيكل التنقل العام
 

@@ -17,17 +17,18 @@
 
 ### الملفات الأساسية:
 - `README.md` - الفهرس الرئيسي لملفات التوثيق
-- `00-database-structure.md` - هيكل قاعدة البيانات الكامل
-- `01-overview.md` - نظرة عامة على الميزة
-- `02-feature-goal.md` - الهدف من الميزة
-- `03-country-data.md` - بيانات الدولة
-- `04-stages-management.md` - إدارة المراحل التعليمية
-- `05-calendar.md` - إدارة التقويم
-- `06-subjects-management.md` - إدارة المواد الدراسية
-- `07-academic-years.md` - إدارة الأعوام الدراسية
-- `08-notifications.md` - إدارة تعريفات الإشعارات
-- `09-weekdays-settings.md` - إعدادات الأسبوع
-- `10-regions-management.md` - إدارة المناطق
+- `database-structure.md` - هيكل قاعدة البيانات الكامل
+- `overview.md` - نظرة عامة على الميزة
+- `feature-goal.md` - الهدف من الميزة
+- `country-data.md` - بيانات الدولة
+- `stages-management.md` - إدارة المراحل التعليمية
+- `calendar.md` - إدارة التقويم
+- `subjects-management.md` - إدارة المواد الدراسية
+- `academic-years.md` - إدارة الأعوام الدراسية
+- `notifications.md` - إدارة تعريفات الإشعارات
+- `entity-registration-customizations.md` - تخصيصات تسجيل الكيان
+- `weekdays-settings.md` - إعدادات الأسبوع
+- `regions-management.md` - إدارة المناطق
 
 ---
 
@@ -42,22 +43,23 @@
 ### النماذج (Models)
 **المجلد:** `docs/services/contries-management/tech/models/`
 
-- `01-countries.md` - نموذج الدول
-- `02-regions.md` - نموذج المناطق
-- `03-cities.md` - نموذج المدن
-- `04-districts.md` - نموذج الأحياء
-- `05-academic_years.md` - نموذج الأعوام الدراسية
-- `06-terms.md` - نموذج الفصول الدراسية
-- `07-education_level_groups.md` - نموذج مجموعات المراحل التعليمية
-- `08-education_levels.md` - نموذج المراحل التعليمية
-- `09-education_level_group_levels.md` - نموذج ربط المراحل بالمجموعات
-- `10-subjects.md` - نموذج المواد الدراسية
-- `11-subject_education_levels.md` - نموذج ربط المواد بالمراحل
-- `12-holiday_schedules.md` - نموذج جداول الإجازات
-- `13-model_settings.md` - نموذج إعدادات النموذج
-- `14-notification_definitions.md` - نموذج تعريفات الإشعارات
-- `15-notifications.md` - نموذج الإشعارات
-- `16-notification_receivers.md` - نموذج مستقبلي الإشعارات
+- `README.md` - فهرس نماذج البيانات
+- `countries.md` - نموذج الدول
+- `regions.md` - نموذج المناطق
+- `cities.md` - نموذج المدن
+- `districts.md` - نموذج الأحياء
+- `academic_years.md` - نموذج الأعوام الدراسية
+- `terms.md` - نموذج الفصول الدراسية
+- `education_level_groups.md` - نموذج مجموعات المراحل التعليمية
+- `education_levels.md` - نموذج المراحل التعليمية
+- `education_level_group_levels.md` - نموذج ربط المراحل بالمجموعات
+- `subjects.md` - نموذج المواد الدراسية
+- `subject_education_levels.md` - نموذج ربط المواد بالمراحل
+- `holiday_schedules.md` - نموذج جداول الإجازات
+- `model_settings.md` - نموذج إعدادات النموذج
+- `notification_definitions.md` - نموذج تعريفات الإشعارات
+- `notifications.md` - نموذج الإشعارات
+- `notification_receivers.md` - نموذج مستقبلي الإشعارات
 
 ---
 
@@ -67,14 +69,15 @@
 
 ### الملفات:
 - `README.md` - الفهرس الرئيسي لملفات تجربة المستخدم
-- `01-country-data-ux.md` - تجربة المستخدم لبيانات الدولة
-- `02-stages-management-ux.md` - تجربة المستخدم لإدارة المراحل
-- `03-calendar-ux.md` - تجربة المستخدم للتقويم
-- `04-subjects-management-ux.md` - تجربة المستخدم لإدارة المواد
-- `05-academic-years-ux.md` - تجربة المستخدم للأعوام الدراسية
-- `06-notifications-ux.md` - تجربة المستخدم للإشعارات
-- `07-weekdays-settings-ux.md` - تجربة المستخدم لإعدادات الأسبوع
-- `08-regions-management-ux.md` - تجربة المستخدم لإدارة المناطق
+- `country-data-ux.md` - تجربة المستخدم لبيانات الدولة
+- `stages-management-ux.md` - تجربة المستخدم لإدارة المراحل
+- `calendar-ux.md` - تجربة المستخدم للتقويم
+- `subjects-management-ux.md` - تجربة المستخدم لإدارة المواد
+- `academic-years-ux.md` - تجربة المستخدم للأعوام الدراسية
+- `notifications-ux.md` - تجربة المستخدم للإشعارات
+- `entity-registration-customizations-ux.md` - تجربة المستخدم لتخصيصات تسجيل الكيان
+- `weekdays-settings-ux.md` - تجربة المستخدم لإعدادات الأسبوع
+- `regions-management-ux.md` - تجربة المستخدم لإدارة المناطق
 
 ---
 
@@ -106,7 +109,7 @@
 
 عند كتابة prompt لأي AI agent للعمل على خدمة إدارة الدول:
 
-1. **للتوثيق الشامل:** ابدأ بقراءة `guide/01-overview.md` ثم الملفات الأخرى حسب الحاجة
+1. **للتوثيق الشامل:** ابدأ بقراءة `guide/overview.md` ثم الملفات الأخرى حسب الحاجة
 2. **للنماذج والبنية التقنية:** راجع `tech/models/` و `tech/permissions.md`
 3. **لتجربة المستخدم:** راجع `user-experience/` لفهم التدفقات والواجهات
 4. **للمعايير:** راجع `tech-standards/` للتأكد من اتباع المعايير
@@ -125,9 +128,9 @@
 
 ## 🔗 الترتيب المقترح للقراءة
 
-1. `guide/01-overview.md` - لفهم الميزة بشكل عام
-2. `guide/02-feature-goal.md` - لفهم الهدف من الميزة
-3. `guide/00-database-structure.md` - لفهم هيكل قاعدة البيانات
+1. `guide/overview.md` - لفهم الميزة بشكل عام
+2. `guide/feature-goal.md` - لفهم الهدف من الميزة
+3. `guide/database-structure.md` - لفهم هيكل قاعدة البيانات
 4. `tech/models/` - لفهم النماذج بالتفصيل
 5. `user-experience/` - لفهم تجربة المستخدم
 6. `tech/permissions.md` - لفهم الصلاحيات المطلوبة

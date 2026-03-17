@@ -163,7 +163,36 @@
 
 ---
 
-## 8. إدارة المناطق (Regions Management)
+## 8. تخصيصات تسجيل الكيان (Entity Registration Customizations)
+
+### الصلاحيات
+
+- `countries_management.entity_registration_customizations.view` - عرض إعدادات تخصيصات تسجيل الكيان
+- `countries_management.entity_registration_customizations.update` - تعديل إعدادات تخصيصات تسجيل الكيان
+- `countries_management.entity_registration_customizations.entity_types.update` - تفعيل/تعطيل أنواع الكيانات أثناء التسجيل
+- `countries_management.entity_registration_customizations.custom_fields.view` - عرض الحقول المخصصة حسب نوع الكيان
+- `countries_management.entity_registration_customizations.custom_fields.create` - إضافة حقل مخصص
+- `countries_management.entity_registration_customizations.custom_fields.update` - تعديل حقل مخصص
+- `countries_management.entity_registration_customizations.custom_fields.delete` - حذف حقل مخصص
+
+### القواعد
+
+- **بيانات التواصل الإلزامية**:
+  - يمكن جعل (الجوال/البريد) كلاهما إلزامي أو أحدهما أو كلاهما اختياري حسب سياسة الدولة
+- **تفعيل/تعطيل أنواع الكيانات**:
+  - تعطيل نوع كيان يعني عدم ظهوره للمستخدم النهائي في خطوة اختيار نوع الكيان أثناء التسجيل
+  - تعطيل نوع كيان لا يحذف الحقول المخصصة التابعة له (تبقى محفوظة ويمكن إعادة تفعيله)
+  - ترتيب أنواع الكيانات يبقى ثابتًا كما هو في `docs/tenants.md` (التفعيل/التعطيل يؤثر فقط على الظهور)
+- **الحقول المخصصة**:
+  - يجب التحقق من صحة `key` (يسمح فقط بـ `a-z`, `0-9`, `_`)
+  - يجب منع تكرار `key` ضمن نفس (الدولة + نوع الكيان)
+  - الحقول الاختيارية (select/radio/...) لا يمكن حفظها بدون `options`
+  - عند تفعيل شرط الظهور (Conditional visibility) يجب أن يكون الشرط مكتملًا (field/operator/value)
+  - يجب منع حلقات الاعتمادية (اعتماد الحقل على نفسه أو على حقل لاحق) حسب القيود المعتمدة
+
+---
+
+## 9. إدارة المناطق (Regions Management)
 
 ### الصلاحيات
 
