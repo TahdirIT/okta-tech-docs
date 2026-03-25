@@ -157,11 +157,11 @@
 
 | عنوان الفنكشن | مكان الملف |
 |---|---|
-| عرض إعدادات تخصيصات تسجيل الكيان | `app/Services/CountriesManagement/EntityRegistrationCustomizations/ShowEntityRegistrationCustomizations.php` |
-| تحديث إعدادات إلزام الجوال/البريد | `app/Services/CountriesManagement/EntityRegistrationCustomizations/UpdateEntityRegistrationContactRequirements.php` |
-| تفعيل/تعطيل نوع كيان أثناء التسجيل | `app/Services/CountriesManagement/EntityRegistrationCustomizations/ToggleEntityTypeEnabled.php` |
-| عرض الحقول المخصصة حسب نوع الكيان | `app/Services/CountriesManagement/EntityRegistrationCustomizations/CustomFields/ListEntityRegistrationCustomFields.php` |
-| إضافة حقل مخصص | `app/Services/CountriesManagement/EntityRegistrationCustomizations/CustomFields/CreateEntityRegistrationCustomField.php` |
-| تعديل حقل مخصص | `app/Services/CountriesManagement/EntityRegistrationCustomizations/CustomFields/UpdateEntityRegistrationCustomField.php` |
-| حذف حقل مخصص | `app/Services/CountriesManagement/EntityRegistrationCustomizations/CustomFields/DeleteEntityRegistrationCustomField.php` |
+| جلب إعدادات تخصيصات تسجيل الكيان (مع القيم الافتراضية) | `app/Services/CountriesManagement/EntityRegistrationCustomizations/GetSettings.php` |
+| تحديث إعدادات إلزام الجوال/البريد | `app/Services/CountriesManagement/EntityRegistrationCustomizations/UpdateContactRequirements.php` |
+| تفعيل/تعطيل نوع كيان أثناء التسجيل | `app/Services/CountriesManagement/EntityRegistrationCustomizations/UpdateEntityTypeStatus.php` |
+| إضافة حقل مخصص | `app/Services/CountriesManagement/EntityRegistrationCustomizations/CreateCustomField.php` |
+| تعديل حقل مخصص | `app/Services/CountriesManagement/EntityRegistrationCustomizations/UpdateCustomField.php` |
+| حذف حقل مخصص | `app/Services/CountriesManagement/EntityRegistrationCustomizations/DeleteCustomField.php` |
 
+> **ملاحظة**: `GetSettings.php` يحتوي على ثابت `ENTITY_TYPES` الذي يُعرّف أسماء أنواع الكيانات الثمانية بالترتيب، ويُستخدَم في المكوّن و Service آخر. كلا من `CreateCustomField` و `UpdateCustomField` يشتركان في منطق التحقق والبناء عبر methods عامة `validate()` و `build()`.
