@@ -7,8 +7,21 @@
 عند نجاح التسجيل تُنشئ الخدمة:
 
 - **Tenant** جديد (كيان مثل: مدرسة/مجمع/… حسب “نوع الكيان”).
-- **حساب مستخدم مالك** (Owner/Admin) مرتبط بالـ Tenant.
+- **حساب مستخدم مالك** (Owner/Admin) مرتبط بالـ Tenant (راجع: `docs/services/user-management/tech/models/users.md`).
 - **تسجيل دخول مباشر** إلى حساب المالك بعد الإتمام (Auto sign-in) ثم تحويله إلى شاشة/تجربة التحقق، مع **تقييد كامل للصلاحيات** إلى أن يكتمل التحقق المطلوب حسب إعدادات الدولة.
+
+## بعد تسجيل الكيان: إضافة مستخدمين جدد
+
+بعد إنشاء الـ Tenant وتفعيل الحساب (حسب قواعد التحقق)، تكون **إضافة مستخدم جديد** تتم عبر خدمة `user-management` وليس ضمن `tenant-registration`:
+
+- إنشاء `user` + `user_identifiers` + `user_credentials` (حسب سياسة المنتج).
+- ربط المستخدم بالمستأجر عبر علاقة User <-> Tenant (مثال: جدول ربط مثل `tenant_user`).
+- إسناد الأدوار على مستوى المستأجر عبر RBAC (مثال: `tenant_user_has_roles`).
+
+مراجع:
+
+- `docs/services/user-management/README.md`
+- `docs/services/role-based-access-control/tech/permissions.md`
 
 ## اعتماد الخدمة على “إعدادات الدولة”
 

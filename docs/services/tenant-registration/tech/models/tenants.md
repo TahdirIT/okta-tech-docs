@@ -2,38 +2,37 @@
 
 ## الغرض
 
-تمثيل الكيان (Tenant) الذي يتم إنشاؤه عبر خدمة تسجيل الكيان، وربطه بالدولة ونوع الكيان وبعض البيانات المرجعية المطلوبة للتفعيل والحوكمة.
+تمثيل الكيان (Tenant) في مشروع `okta-web`، وهو الكيان الذي يتم:
 
-## أعمدة مقترحة (مستقلة عن الـ ORM)
+- ربط المستخدمين به (عبر `tenant_user`)
+- إعداد طرق تسجيل الدخول الخاصة به (عبر `tenant_login_methods`)
+
+## الأعمدة (مطابقة لـ `okta-web`)
 
 - **id**: `bigint` (PK)
-- **ulid**: `char(26)` unique (للـ APIs العامة)
-- **country_id**: `bigint` (FK → `countries.id`)
-- **tenant_type**: `varchar` (مثل: `administrative_school`, `individual_teacher`, …)
 - **name**: `varchar`
-- **education_level_group_id**: `bigint` nullable (FK → `education_level_groups.id`)
-  - مطلوب عندما يكون `tenant_type` = **مدرسة إدارية** أو **معلم فردي**
-- **custom_fields**: `jsonb` nullable (key/value بعد التحقق)
-- **activation_status**: `varchar` default `pending_verification` (مثل: `pending_verification | active | blocked`)
-- **created_by_user_id**: `bigint` nullable (FK → `users.id`) — المستخدم المالك
-- **created_at / updated_at**: `timestamptz`
+- **type**: `varchar`
+  - قيم شائعة (حسب تعليق migration في `okta-web`): `school | kindergarten | institute | academy | college | university`
+- **country_id**: `bigint` nullable (FK → `countries.id`)
+- **status**: `varchar` default `active`
+  - قيم شائعة (حسب تعليق migration في `okta-web`): `active | suspended`
+- **created_at / updated_at**: `timestamp`
+- **deleted_at**: `timestamp` (Soft Deletes)
 
 ## العلاقات
 
-- **belongsTo**: `countries`
-- **belongsTo (nullable)**: `education_level_groups` (من خدمة/مفهوم إدارة الدول)
-- **belongsTo**: `users` (Owner account) عبر `created_by_user_id`
+- **belongsTo**: `country` (→ `countries`)
+- **hasMany**: `userLinks` (→ `tenant_user` rows via `TenantUser`)
+- **belongsToMany**: `users` عبر pivot جدول `tenant_user` (مع `deleted_at` على الـ pivot)
+- **hasMany**: `loginMethods` (→ `tenant_login_methods`) مع فلترة `enabled=true` و `deleted_at is null`
 
-## القيود/الفهارس المقترحة
+## القيود/الفهارس (مطابقة لـ `okta-web`)
 
-- **unique**: (`ulid`)
-- **index**: (`country_id`)
-- **index**: (`tenant_type`)
-- (اختياري) **unique**: (`country_id`, `name`) إن كانت السياسة تمنع تكرار الاسم داخل الدولة
+- لا توجد قيود unique أو فهارس إضافية معرفة في migration لجدول `tenants` (عدا القيود الافتراضية للمفاتيح الأجنبية).
+- **FK**: `country_id` يقبل `null` ويتم `nullOnDelete()` عند حذف الدولة.
 
 ## ملاحظات
 
-- مصدر تعريف `education_level_groups` موثق في:
-  - `docs/services/contries-management/guide/stages-management.md`
-  - `docs/services/contries-management/tech/models/education_level_groups.md`
+- التوثيق السابق كان يفترض حقولًا مثل `ulid`, `tenant_type`, `education_level_group_id`, `custom_fields`, `created_by_user_id` و `activation_status` — هذه **غير موجودة حاليًا** في `okta-web`.
+- إذا كانت خدمة `tenant-registration` تحتاج Wizard وحقولًا ديناميكية حسب الدولة/النوع، فهذه إضافات مستقبلية يمكن تنفيذها، راجع `tenant_registration_sessions.md` كاقتراح.
 
