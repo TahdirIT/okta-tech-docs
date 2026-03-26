@@ -4,7 +4,7 @@
 
 تخزين إعدادات **تخصيصات تسجيل الكيان** على مستوى الدولة، والتي تتحكم في:
 
-- متطلبات بيانات التواصل الإلزامية أثناء التسجيل (جوال/بريد)
+- متطلبات البيانات الإلزامية أثناء التسجيل (هوية وطنية/جوال/بريد)
 - ترتيب عرض **أنواع الكيانات** أثناء التسجيل
 - تفعيل/تعطيل ظهور نوع كيان للمستخدم أثناء التسجيل
 - تعريف **حقول مخصصة إضافية** تظهر حسب نوع الكيان، مع دعم:
@@ -12,6 +12,7 @@
   - خيارات متعددة اللغات للحقول الاختيارية (`options[].label`)
   - شروط الظهور (Conditional visibility)
   - إلزامية الإدخال عند الظهور
+  - التحقق/القيود (Validations) مثل: عدة Regex مع رسائل خطأ متعددة اللغات، وحدود min/max حسب النوع
 
 > المرجع الوظيفي/المنتجي: `docs/services/contries-management/guide/entity-registration-customizations.md`  
 > المرجع UX: `docs/services/contries-management/user-experience/entity-registration-customizations-ux.md`
@@ -33,6 +34,7 @@
 ```json
 {
   "contact_requirements": {
+    "national_id_required": true,
     "mobile_required": true,
     "email_required": false
   },
@@ -60,6 +62,21 @@
     "custom_fields": {
       "administrative_school": [
         {
+          "type": "text",
+          "key": "license_number",
+          "label": { "ar": "رقم الترخيص", "en": "License number" },
+          "visibility": { "mode": "always" },
+          "required_when_visible": true,
+          "validations": {
+            "regex_rules": [
+              {
+                "regex": "^[0-9]{10}$",
+                "message": { "ar": "رقم الترخيص يجب أن يكون 10 أرقام", "en": "License number must be 10 digits" }
+              }
+            ]
+          }
+        },
+        {
           "type": "radio",
           "key": "school_gender",
           "label": { "ar": "نوع المدرسة", "en": "School type" },
@@ -81,10 +98,11 @@
 
 ### 1) `contact_requirements`
 
+- **`national_id_required`**: `boolean` — هل رقم الهوية الوطنية إلزامي؟
 - **`mobile_required`**: `boolean` — هل رقم الجوال إلزامي؟
 - **`email_required`**: `boolean` — هل البريد الإلكتروني إلزامي؟
 
-> يمكن أن يكون كلاهما إلزامي أو أحدهما أو كلاهما اختياري.
+> يمكن أن تكون أي تركيبة إلزامية/اختيارية بين (الهوية الوطنية/الجوال/البريد) حسب سياسة الدولة.
 
 ### 2) `entity_registration.types_order`
 
@@ -121,15 +139,29 @@
   - `mode`: `always | conditional`
   - `when`: يظهر فقط عندما `mode = conditional` (انظر قسم الشروط)
 - **`required_when_visible`**: `boolean`
+- **`validations`**: `object` (اختياري) — تحقق/قيود حسب نوع الحقل (Regex, min/max, ...)
 
-#### 3.2) خصائص إضافية اختيارية (حسب النوع)
+#### 3.2) `validations` (اختياري) — التحقق/القيود
 
-- للحقول النصية/الرقمية (اختياري):
-  - `min_length`, `max_length`
-  - `min`, `max`
-  - `pattern` (Regex)
-- للملفات:
-  - `accept`: `array<string>` (مثل: `["pdf","png","jpg"]`)
+- **للحقول النصية** (`text`, `textarea`) (اختياري):
+  - `min_length`: `number`
+  - `max_length`: `number`
+  - `pattern`: `string` (Regex) (للاحتياج البسيط/التوافقية)
+  - `regex_rules`: `array` (Multiple Regex verifications)
+    - `regex_rules[].regex`: `string`
+    - `regex_rules[].message`: `object` (i18n) مثل `{ "ar": "...", "en": "..." }`
+- **للحقول الرقمية** (`number`) (اختياري):
+  - `min`: `number`
+  - `max`: `number`
+- **للتاريخ** (`date`) (اختياري):
+  - `min_date`: `string` (ISO `YYYY-MM-DD`)
+  - `max_date`: `string` (ISO `YYYY-MM-DD`)
+- **للقوائم المتعددة** (`multi_select`, `checkbox_group`) (اختياري حسب المنتج):
+  - `min_selected`: `number`
+  - `max_selected`: `number`
+- **للملفات** (`file`) (اختياري):
+  - `accept`: `array<string>` (مثل: `["pdf","png","jpg"]`) — *يبقى على مستوى الحقل لأنه يصف نوع المحتوى المقبول*
+  - `min_size_mb`: `number` (اختياري)
   - `max_size_mb`: `number`
 
 ## شروط الظهور (Conditional visibility)

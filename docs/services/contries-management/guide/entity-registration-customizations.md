@@ -2,14 +2,15 @@
 
 هذا القسم يوضح إعدادات “تخصيصات تسجيل الكيان” التي تُدار **على مستوى الدولة** وتؤثر على تجربة إنشاء/تسجيل كيان جديد (Tenant) في المنصة.
 
-## 1) بيانات التواصل الإلزامية (لكل الكيانات)
+## 1) بيانات التواصل/الهوية الإلزامية (لكل الكيانات)
 
-تحدد الدولة متطلبات بيانات التواصل الأساسية أثناء تسجيل أي كيان:
+تحدد الدولة متطلبات البيانات الأساسية أثناء تسجيل أي كيان:
 
 - **إلزام رقم الجوال**: تحديد ما إذا كان إدخال رقم الجوال إجباريًا.
 - **إلزام البريد الإلكتروني**: تحديد ما إذا كان إدخال البريد الإلكتروني إجباريًا.
+- **إلزام رقم الهوية الوطنية**: تحديد ما إذا كان إدخال رقم الهوية الوطنية إجباريًا.
 
-> ملاحظة: يمكن السماح بأن يكون كلاهما إلزاميًا، أو أحدهما فقط، أو كلاهما اختياريًا حسب سياسة الدولة.
+> ملاحظة: يمكن أن تكون أي تركيبة مطلوبة حسب سياسة الدولة (الجوال/البريد/الهوية)، بما في ذلك إلزام حقل واحد أو أكثر أو جعلها اختيارية.
 
 ## 2) أنواع الكيانات (مرتبة حسب `docs/tenants.md`)
 
@@ -76,6 +77,7 @@
 4. **خيارات الخانة** (`options`) بحسب النوع
 5. **شرط الظهور** (`visibility`) هل هو مشروط أم مفتوح
 6. **إجباري عند الظهور** (`required_when_visible`)
+7. **التحقق/القيود** (`validations`) (اختياري)
 
 #### تعدد اللغات في `label`
 
@@ -89,6 +91,75 @@
 - بصيغة `snake_case` مثل: `license_number`, `school_gender`, `has_boarding`.
 - يُفضّل عدم تغييره بعد الاستخدام لتجنب كسر البيانات التاريخية.
 
+#### 3.2.1) التحقق (Validations) — دعم عدة Regex
+
+يمكن إضافة كائن `validations` لتعريف قيود التحقق على قيمة الحقل. ضمنه يمكن دعم:
+
+- تحقق Regex واحد بسيط عبر `pattern` (للاحتياج البسيط/التوافقية).
+- **تحقق Regex متعدد** عبر `regex_rules`، بحيث يمكن تعريف أكثر من Regex، ولكل واحد **رسالة خطأ عربية وإنجليزية**.
+- **قيود حدود (Limits)** مثل حد أدنى/أعلى حسب نوع الحقل (نص/رقم/تاريخ/ملف...).
+
+صيغة مقترحة:
+
+```json
+{
+  "validations": {
+    "pattern": "^[0-9]{10}$",
+    "regex_rules": [
+      {
+        "regex": "^[0-9]{10}$",
+        "message": { "ar": "رقم الترخيص يجب أن يكون 10 أرقام", "en": "License number must be 10 digits" }
+      },
+      {
+        "regex": "^(?!0000000000).*$",
+        "message": { "ar": "رقم الترخيص غير صالح", "en": "Invalid license number" }
+      }
+    ]
+  }
+}
+```
+
+ملاحظات:
+
+- `regex_rules` تُطبق بالترتيب؛ أول قاعدة تفشل تُرجع رسالتها.
+- `pattern` و `regex_rules` اختياريان؛ ويمكن دعم أحدهما أو كليهما حسب الاحتياج.
+- عند وجود `regex_rules` يُفضّل إهمال/تجاهل `pattern` في التنفيذ الفعلي لتجنب ازدواجية التحقق (قرار تنفيذي).
+
+#### 3.2.2) Limits validations (حد أدنى/أعلى) حسب النوع
+
+داخل `validations` يمكن تعريف حدود دنيا/عليا بطريقة مناسبة لنوع الحقل:
+
+- **text / textarea**:
+  - `min_length`, `max_length`
+- **number**:
+  - `min`, `max`
+- **date**:
+  - `min_date`, `max_date` (صيغة ISO مثل `YYYY-MM-DD`)
+- **file**:
+  - `max_size_mb`
+  - (اختياري) `min_size_mb`
+- **select / multi_select / checkbox_group** (اختياري حسب المنتج):
+  - `min_selected`, `max_selected`
+
+مثال تمثيلي (جزء من حقل):
+
+```json
+{
+  "validations": {
+    "min_length": 3,
+    "max_length": 50,
+    "min": 1,
+    "max": 9999,
+    "min_date": "2020-01-01",
+    "max_date": "2030-12-31",
+    "min_selected": 1,
+    "max_selected": 3,
+    "min_size_mb": 0.1,
+    "max_size_mb": 10
+  }
+}
+```
+
 ### 3.3) خيارات الخانة (حسب النوع)
 
 - **select / multi_select / radio / checkbox_group**:
@@ -97,11 +168,9 @@
     - `label`: عنوان الخيار متعدد اللغات يظهر للمستخدم
 - **file**:
   - `accept`: الامتدادات المسموحة (مثل: `pdf`, `png`, `jpg`)
-  - `max_size_mb`: الحد الأقصى للحجم
-- **text / textarea / number** (اختياري):
-  - `min_length`, `max_length`
-  - `min`, `max`
-  - `pattern` (Regex) إن لزم
+  - (القيود مثل `max_size_mb` تكون داخل `validations`)
+- **ملاحظة**:
+  - القيود/التحقق مثل `min_length`, `max_length`, `min`, `max`, `pattern`, `regex_rules` تكون داخل `validations` (إن لزم).
 
 ## 4) شروط الظهور (Conditional visibility)
 
@@ -143,6 +212,7 @@
 ```json
 {
   "contact_requirements": {
+    "national_id_required": true,
     "mobile_required": true,
     "email_required": false
   },
@@ -159,6 +229,25 @@
     ],
     "custom_fields": {
       "administrative_school": [
+        {
+          "type": "text",
+          "key": "license_number",
+          "label": { "ar": "رقم الترخيص", "en": "License number" },
+          "visibility": { "mode": "always" },
+          "required_when_visible": true,
+          "validations": {
+            "regex_rules": [
+              {
+                "regex": "^[0-9]{10}$",
+                "message": { "ar": "رقم الترخيص يجب أن يكون 10 أرقام", "en": "License number must be 10 digits" }
+              },
+              {
+                "regex": "^(?!0000000000).*$",
+                "message": { "ar": "رقم الترخيص غير صالح", "en": "Invalid license number" }
+              }
+            ]
+          }
+        },
         {
           "type": "radio",
           "key": "school_gender",
@@ -186,7 +275,8 @@
             "mode": "conditional",
             "when": { "field": "has_boarding", "operator": "is_true" }
           },
-          "required_when_visible": true
+          "required_when_visible": true,
+          "validations": { "min": 1, "max": 5000 }
         }
       ]
     }

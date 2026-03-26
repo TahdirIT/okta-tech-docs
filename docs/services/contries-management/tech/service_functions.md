@@ -158,7 +158,7 @@
 | عنوان الفنكشن | مكان الملف |
 |---|---|
 | عرض إعدادات تخصيصات تسجيل الكيان | `app/Services/CountriesManagement/EntityRegistrationCustomizations/ShowEntityRegistrationCustomizations.php` |
-| تحديث إعدادات إلزام الجوال/البريد | `app/Services/CountriesManagement/EntityRegistrationCustomizations/UpdateEntityRegistrationContactRequirements.php` |
+| تحديث إعدادات إلزام الهوية/الجوال/البريد | `app/Services/CountriesManagement/EntityRegistrationCustomizations/UpdateEntityRegistrationContactRequirements.php` |
 | تفعيل/تعطيل نوع كيان أثناء التسجيل | `app/Services/CountriesManagement/EntityRegistrationCustomizations/ToggleEntityTypeEnabled.php` |
 | عرض الحقول المخصصة حسب نوع الكيان | `app/Services/CountriesManagement/EntityRegistrationCustomizations/CustomFields/ListEntityRegistrationCustomFields.php` |
 | إضافة حقل مخصص | `app/Services/CountriesManagement/EntityRegistrationCustomizations/CustomFields/CreateEntityRegistrationCustomField.php` |

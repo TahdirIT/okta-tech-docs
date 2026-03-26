@@ -1,0 +1,18 @@
+# خدمة رمز التحقق (OTP Service)
+
+هذا المجلد يحتوي على توثيق شامل لخدمة **رمز التحقق لمرة واحدة (OTP)** في المنصة.
+التوثيق يغطي:
+
+- تدفق طلب الرمز وإرساله (Email/SMS/قنوات أخرى حسب التكامل).
+- التحقق من الرمز واستهلاكه (Consume) وربطه بسياق (Purpose/Action).
+- سياسات الصلاحية (TTL) وحدود الطلبات (Rate limiting) ومحاولات التحقق.
+- أحداث (Events) تُطلق أثناء دورة حياة الـ OTP لدعم التكامل.
+
+## الملفات
+
+- [نظرة عامة](./01-overview.md)
+- [الهدف من الميزة](./02-feature-goal.md)
+- [تدفق OTP (Request/Verify/Consume)](./03-otp-flow.md)
+- [الأمان والحدود (TTL/Rate limit/Attempts)](./04-security-and-limits.md)
+- [الأحداث (Event triggers)](./05-events.md)
+
