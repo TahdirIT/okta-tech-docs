@@ -18,6 +18,7 @@
 - أنواع الخانات المدعومة
 - مواصفات تعريف الحقل (Schema)
 - شروط الظهور (Conditional visibility)
+- التحقق/القيود (Validations): `validations` + `regex_rules` (مع رسائل ar/en) + limits (min/max)
 
 ---
 
@@ -33,6 +34,7 @@
 - الحقول المخصصة الإضافية (إضافة/تعديل/حذف)
 - تعدد اللغات (Labels i18n)
 - تحققّات وأخطاء شائعة
+- سلوك واجهة إعداد `validations` (حدود + Regex متعددة برسائل ar/en)
 
 ---
 
@@ -54,6 +56,7 @@
 - خصائص إضافية حسب النوع
 - شروط الظهور (Conditional visibility)
 - القيود والتحقق (Validation / Constraints)
+- توثيق `validations` (Regex rules + limits) داخل تعريف الحقل
 
 ### الصلاحيات (Permissions)
 
@@ -177,6 +180,19 @@
 - **أنواع الكيانات**: يجب أن تطابق العناوين المعروضة للمستخدم العناوين في `docs/tenants.md`
 - **تعدد اللغات**: يجب دعم تعدد اللغات في `label` و `options[].label` (ar, en)
 - **شروط الظهور**: يجب التحقق من اكتمال الشرط ومنع حلقات الاعتمادية
+- **validations**:
+  - يمكن لكل حقل تعريف `validations` (اختياري) للتحقق/القيود.
+  - **Multiple Regex verifications**: استخدم `validations.regex_rules[]`، ولكل قاعدة:
+    - `regex`
+    - `message.ar` و `message.en` لرسائل الخطأ
+  - **Limits validations** (حد أدنى/أعلى) حسب النوع داخل `validations`:
+    - نص: `min_length`, `max_length`
+    - رقم: `min`, `max`
+    - تاريخ: `min_date`, `max_date` (ISO `YYYY-MM-DD`)
+    - ملف: `min_size_mb` (اختياري), `max_size_mb` (+ `accept` يبقى على مستوى الحقل)
+    - قوائم متعددة (اختياري حسب المنتج): `min_selected`, `max_selected`
+  - عند وجود `regex_rules` تُطبّق بالترتيب؛ **أول قاعدة تفشل تُرجع رسالتها** (حسب لغة الواجهة).
+  - يجب منع إدخال حدود غير منطقية (مثال: `min > max`، `min_length > max_length`، `min_date > max_date`).
 
 ---
 
@@ -189,3 +205,11 @@
 5. `tech/permissions.md` - لفهم الصلاحيات المطلوبة
 6. `tenants.md` - لفهم أنواع الكيانات
 7. `tech-standards/` - لفهم المعايير التقنية
+
+---
+
+## 🤖 إضافة جاهزة للاستخدام في Claude (Prompt snippet)
+
+تم نقل الإضافة إلى ملف مستقل داخل `docs/prompts/`:
+
+- `docs/prompts/add-entity-registration-customizations-validations.md`

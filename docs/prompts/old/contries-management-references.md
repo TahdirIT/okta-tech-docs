@@ -81,6 +81,24 @@
 
 ---
 
+## ✅ ملاحظة مهمة (تحديثات Entity Registration Customizations)
+
+عند العمل على ميزة `entity-registration-customizations` داخل خدمة إدارة الدول، راعِ أن تعريف الحقول المخصصة يدعم:
+
+- **`validations`** داخل تعريف الحقل (اختياري)
+- **Multiple Regex verifications** عبر `validations.regex_rules[]` مع رسائل خطأ `message.ar` و`message.en`
+- **Limits validations** (حدود أقل/أعلى) حسب النوع داخل `validations` (مثل `min/max`, `min_length/max_length`, `min_date/max_date`, `max_size_mb`, ...)
+
+المراجع الأساسية:
+
+- `docs/services/contries-management/guide/entity-registration-customizations.md`
+- `docs/services/contries-management/user-experience/entity-registration-customizations-ux.md`
+- `docs/services/contries-management/tech/data-handling/entity_registration_customizations.md`
+
+إضافة جاهزة للنسخ داخل prompt (Claude):
+
+- `docs/prompts/add-entity-registration-customizations-validations.md`
+
 ## 📋 المعايير التقنية العامة
 
 **المجلد:** `docs/tech-standards/`
