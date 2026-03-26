@@ -15,6 +15,54 @@
 > - يمكن أن تكون أي تركيبة مطلوبة حسب سياسة الدولة (اسم المستخدم/الجوال/البريد/الهوية)، بما في ذلك إلزام حقل واحد أو أكثر أو جعلها اختيارية.
 > - في مسار “لدي حساب مسبق” لا يتم “إنشاء” اسم مستخدم جديد؛ بدلاً من ذلك يُستخدم مُعرّف الدخول (قد يكون اسم المستخدم/الجوال/البريد حسب ما تدعمه المصادقة).
 
+### 1.1) تحقق Regex للجوال ورقم الهوية حسب الدولة (Country-specific validation)
+
+بالإضافة إلى “الإلزامية”، قد تحتاج الدولة إلى فرض **قواعد تحقق مختلفة** على:
+
+- **رقم الجوال** (Mobile)
+- **رقم الهوية الوطنية** (National ID)
+
+لذلك يمكن تعريف إعدادات تحقق على مستوى الدولة (مقترح) تحت كائن مثل:
+
+- `contact_validations.mobile`
+- `contact_validations.national_id`
+
+وبنفس أسلوب `regex_rules` المستخدم في الحقول المخصصة:
+
+- تطبيق القواعد بالترتيب.
+- أول Regex يفشل يُرجع رسالة الخطأ (`ar/en`) حسب لغة الواجهة.
+
+مثال تمثيلي (سعودي) — *القيم Regex مجرد أمثلة قابلة للتغيير حسب سياسة كل دولة*:
+
+```json
+{
+  "contact_requirements": {
+    "username_required": true,
+    "national_id_required": true,
+    "mobile_required": true,
+    "email_required": false
+  },
+  "contact_validations": {
+    "mobile": {
+      "regex_rules": [
+        {
+          "regex": "^05[0-9]{8}$",
+          "message": { "ar": "رقم الجوال يجب أن يبدأ بـ 05 ويتكون من 10 أرقام", "en": "Mobile must start with 05 and be 10 digits" }
+        }
+      ]
+    },
+    "national_id": {
+      "regex_rules": [
+        {
+          "regex": "^[12][0-9]{9}$",
+          "message": { "ar": "رقم الهوية يجب أن يكون 10 أرقام ويبدأ بـ 1 أو 2", "en": "National ID must be 10 digits and start with 1 or 2" }
+        }
+      ]
+    }
+  }
+}
+```
+
 ## 2) أنواع الكيانات (مرتبة حسب `docs/tenants.md`)
 
 يتم عرض أنواع الكيانات للمستخدم بالترتيب التالي:
@@ -219,6 +267,24 @@
     "national_id_required": true,
     "mobile_required": true,
     "email_required": false
+  },
+  "contact_validations": {
+    "mobile": {
+      "regex_rules": [
+        {
+          "regex": "^05[0-9]{8}$",
+          "message": { "ar": "رقم الجوال يجب أن يبدأ بـ 05 ويتكون من 10 أرقام", "en": "Mobile must start with 05 and be 10 digits" }
+        }
+      ]
+    },
+    "national_id": {
+      "regex_rules": [
+        {
+          "regex": "^[12][0-9]{9}$",
+          "message": { "ar": "رقم الهوية يجب أن يكون 10 أرقام ويبدأ بـ 1 أو 2", "en": "National ID must be 10 digits and start with 1 or 2" }
+        }
+      ]
+    }
   },
   "entity_registration": {
     "types_order": [

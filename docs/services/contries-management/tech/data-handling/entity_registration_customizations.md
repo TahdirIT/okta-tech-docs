@@ -39,6 +39,24 @@
     "mobile_required": true,
     "email_required": false
   },
+  "contact_validations": {
+    "mobile": {
+      "regex_rules": [
+        {
+          "regex": "^05[0-9]{8}$",
+          "message": { "ar": "رقم الجوال يجب أن يبدأ بـ 05 ويتكون من 10 أرقام", "en": "Mobile must start with 05 and be 10 digits" }
+        }
+      ]
+    },
+    "national_id": {
+      "regex_rules": [
+        {
+          "regex": "^[12][0-9]{9}$",
+          "message": { "ar": "رقم الهوية يجب أن يكون 10 أرقام ويبدأ بـ 1 أو 2", "en": "National ID must be 10 digits and start with 1 or 2" }
+        }
+      ]
+    }
+  },
   "entity_registration": {
     "types_order": [
       "individual_teacher",
@@ -105,6 +123,24 @@
 - **`email_required`**: `boolean` — هل البريد الإلكتروني إلزامي؟
 
 > يمكن أن تكون أي تركيبة إلزامية/اختيارية بين (اسم المستخدم/الهوية الوطنية/الجوال/البريد) حسب سياسة الدولة.
+
+### 1.1) `contact_validations` (اختياري)
+
+دعم تحقق (Validation) على مستوى الدولة للحقول الأساسية:
+
+- `contact_validations.mobile`
+- `contact_validations.national_id`
+
+الصيغة المقترحة لكل حقل:
+
+- `regex_rules`: `array`
+  - `regex_rules[].regex`: `string`
+  - `regex_rules[].message`: `object` (i18n) مثل `{ "ar": "...", "en": "..." }`
+
+ملاحظات:
+
+- تُطبّق القواعد بالترتيب؛ أول قاعدة تفشل تُرجع رسالتها.
+- يفضّل أن تكون هذه التحققّات **مكمّلة** لتحقق الصيغة العامة (مثل trimming/normalization) حسب قرار التنفيذ.
 
 ### 2) `entity_registration.types_order`
 

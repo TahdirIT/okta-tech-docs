@@ -21,6 +21,11 @@
 - username_required
 - national_id_required
 
+وأضف دعم تحقق Regex على مستوى الدولة للحقول الأساسية:
+- contact_validations.mobile.regex_rules
+- contact_validations.national_id.regex_rules
+- كل قاعدة Regex تحتوي رسالة خطأ متعددة اللغات: message.ar و message.en
+
 المطلوب:
 1) تحديث الدليل الوظيفي (guide) لتوضيح أن Username و National ID قابلان للإلزام حسب الدولة.
 2) تحديث UX لعرض إعدادات إلزام الحقلين ضمن شاشة التخصيصات.
@@ -28,8 +33,13 @@
    - username_required: boolean
    - national_id_required: boolean
    (مع الحفاظ على بقية الحقول الموجودة إن كانت مستخدمة).
-4) تحديث أمثلة JSON في نفس ملفات contries-management بحيث تعكس الحقول الجديدة.
-5) الحفاظ على اتساق المصطلحات بين guide و UX و tech (Username / National ID).
+4) إضافة/تحديث contact_validations في guide و tech/data-handling بحيث يدعم:
+   - mobile.regex_rules[]: { regex, message: { ar, en } }
+   - national_id.regex_rules[]: { regex, message: { ar, en } }
+   - تطبيق القواعد بالترتيب، وأول قاعدة تفشل ترجع رسالتها.
+5) تحديث UX لتوضيح وجود إعدادات تحقق Regex للجوال والهوية حسب الدولة.
+6) تحديث أمثلة JSON في نفس ملفات contries-management بحيث تعكس الحقول الجديدة.
+7) الحفاظ على اتساق المصطلحات بين guide و UX و tech (Username / National ID / Mobile Regex / National ID Regex).
 
 قيود مهمة:
 - نطاق التعديل محصور في docs/services/contries-management فقط.
