@@ -34,7 +34,7 @@ Payload مقترح:
 - **tenant_type**
 - **tenant_name**
 - **owner_user_id**
-- **contact_requirements**: `{ national_id_required, mobile_required, email_required }`
+- **contact_requirements**: `{ username_required, national_id_required, mobile_required, email_required }`
 - **activation_status**: `pending_verification`
 
 ## 3) tenant_registration.verification.mobile_started.v1
@@ -89,6 +89,8 @@ Payload مقترح:
 - **user_id**
 - **activated_at**
 - **activation_rule**: `mobile_only | email_only | both | any_one`
+- **requirements**: `{ username_required, national_id_required, mobile_required, email_required }`
+- **verified**: `{ mobile_verified, email_verified }`
 
 ## خدمات مستقبلية يمكنها الاستماع
 

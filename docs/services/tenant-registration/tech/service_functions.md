@@ -8,7 +8,7 @@
 
 - **Function**: `getEntityRegistrationCustomization(country_id)`
 - **Returns**:
-  - `contact_requirements`: `{ national_id_required, mobile_required, email_required }`
+  - `contact_requirements`: `{ username_required, national_id_required, mobile_required, email_required }`
   - `enabled_tenant_types`: قائمة بأنواع الكيانات المفعلة (مرتبة)
   - `custom_fields_schema`: تعريف الحقول المخصصة + شروط الظهور
   - `stages` (اختياري): قائمة/شجرة مراحل الدولة لاستخدامها عند اختيار نوع كيان يتطلب مرحلة
