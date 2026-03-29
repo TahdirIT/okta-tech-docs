@@ -1,4 +1,4 @@
-# وظائف الخدمة: واجهات برمجية (APIs)
+﻿# وظائف الخدمة: واجهات برمجية (APIs)
 
 ## تعريفات الإشعارات (منصة)
 - POST /api/admin/notification-definitions
@@ -22,4 +22,13 @@
 ## تشغيل إشعار
 - POST /api/notifications/trigger
   - body: { definition_key, recipient, data, channels? }
+
+## إشعارات التطبيق (Firebase Messaging)
+- POST /api/me/notification-tokens
+  - body: { token, platform, app_version? }
+- DELETE /api/me/notification-tokens/{token}
+- GET /api/me/notifications
+- GET /api/me/notifications/unread-count
+- PUT /api/me/notifications/{id}/read
+- PUT /api/me/notifications/read-all
 
