@@ -36,7 +36,27 @@
 {
   "contact_requirements": {
     "mobile_required": true,
-    "email_required": false
+    "email_required": false,
+    "username_required": false,
+    "national_id_required": false
+  },
+  "contact_validations": {
+    "mobile": {
+      "regex_rules": [
+        {
+          "regex": "/^05\\d{8}$/",
+          "message": { "ar": "يجب أن يبدأ رقم الجوال بـ 05 ويتكوّن من 10 أرقام", "en": "Mobile must start with 05 and be 10 digits" }
+        }
+      ]
+    },
+    "national_id": {
+      "regex_rules": [
+        {
+          "regex": "/^[12]\\d{9}$/",
+          "message": { "ar": "رقم الهوية يجب أن يكون 10 أرقام ويبدأ بـ 1 أو 2", "en": "National ID must be 10 digits starting with 1 or 2" }
+        }
+      ]
+    }
   },
   "entity_registration": {
     "types_order": [
@@ -85,8 +105,25 @@
 
 - **`mobile_required`**: `boolean` — هل رقم الجوال إلزامي؟
 - **`email_required`**: `boolean` — هل البريد الإلكتروني إلزامي؟
+- **`username_required`**: `boolean` — هل اسم المستخدم إلزامي؟ (افتراضي: `false`)
+- **`national_id_required`**: `boolean` — هل رقم الهوية الوطنية إلزامي؟ (افتراضي: `false`)
 
 > يمكن أن يكون كلاهما إلزامي أو أحدهما أو كلاهما اختياري.
+
+### 1.1) `contact_validations`
+
+يُتيح تعريف قواعد تحقق (Regex) لحقلي الجوال ورقم الهوية:
+
+- **`contact_validations.mobile.regex_rules`**: `array` — قواعد Regex للتحقق من رقم الجوال
+- **`contact_validations.national_id.regex_rules`**: `array` — قواعد Regex للتحقق من رقم الهوية
+
+كل قاعدة `regex_rules[i]` تحتوي على:
+- **`regex`**: `string` — نمط PHP Regex (مثل: `/^05\d{8}$/`)
+- **`message`**: `object` — رسالة خطأ متعددة اللغات:
+  - `ar`: إلزامي
+  - `en`: اختياري
+
+> **ملاحظة**: مفتاح `contact_validations` يُخزَّن فقط عند وجود قواعد فعلية. إن كانت جميع القواعد فارغة فلا يُخزَّن في الـ JSON.
 
 ### 2) `entity_registration.types_order`
 
@@ -125,13 +162,20 @@
 
 #### 3.2) خصائص إضافية اختيارية (حسب النوع)
 
-- للحقول النصية/الرقمية (اختياري):
-  - `min_length`, `max_length`
-  - `min`, `max`
-  - `pattern` (Regex)
-- للملفات:
-  - `accept`: `array<string>` (مثل: `["pdf","png","jpg"]`)
-  - `max_size_mb`: `number`
+- **`accept`** (للملفات فقط): `array<string>` — امتدادات الملفات المسموح بها بدون نقاط (مثل: `["pdf","png","jpg"]`)
+- **`validations`** (اختياري لأنواع متعددة): كائن يحتوي على:
+  - **حدود الإدخال** (حسب النوع):
+    - `text` / `textarea`: `min_length`, `max_length`
+    - `number`: `min`, `max`
+    - `date`: `min_date`, `max_date` (تنسيق `YYYY-MM-DD`)
+    - `file`: `min_size_mb`, `max_size_mb`
+    - `multi_select` / `checkbox_group`: `min_selected`, `max_selected`
+  - **`regex_rules`** (لأنواع: `text`, `textarea`, `number`, `email`, `phone`, `url`):
+    - `array` من القواعد، كل قاعدة:
+      - `regex`: `string` — نمط PHP Regex
+      - `message`: `object` — رسالة خطأ (`ar` إلزامي، `en` اختياري)
+
+> **ملاحظة**: مفتاح `validations` يُخزَّن فقط عند وجود قيم فعلية.
 
 ## شروط الظهور (Conditional visibility)
 
