@@ -31,10 +31,6 @@
   - `HOLIDAY`: إجازة
   - `ACTIVITY`: نشاط/حدث
 - **تسجيل الغياب خلال الفترة** (`register_absent`)
-- **إرسال إشعارات** (`send_notifications`) مع:
-  - **موعد الإرسال** (`send_notifications_at`)
-  - **محتوى الإشعار** (`notification_content`)
-  - **المستفيدون** (`notified_users`)
 
 ### قواعد التحقق
 

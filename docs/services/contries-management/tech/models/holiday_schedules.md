@@ -15,10 +15,6 @@
 - **start_at**: `date`
 - **end_at**: `date`
 - **register_absent**: `boolean` default `false`
-- **send_notifications**: `boolean` default `true`
-- **notified_users**: `jsonb` nullable (قائمة المستفيدين/roles)
-- **send_notifications_at**: `timestamptz` nullable
-- **notification_content**: `text` nullable (كما في الدليل)
 - **deleted_at**: `timestamptz` nullable
 - **created_at / updated_at**: `timestamptz`
 

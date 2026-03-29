@@ -9,7 +9,6 @@
 - [التقويم](./calendar-ux.md)
 - [إدارة المواد](./subjects-management-ux.md)
 - [إدارة الأعوام الدراسية](./academic-years-ux.md)
-- [إدارة تعريفات الإشعارات](./notifications-ux.md)
 - [تخصيصات تسجيل الكيان](./entity-registration-customizations-ux.md)
 - [إعدادات الأسبوع](./weekdays-settings-ux.md)
 - [إدارة المناطق](./regions-management-ux.md)

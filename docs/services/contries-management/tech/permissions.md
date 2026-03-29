@@ -69,7 +69,6 @@
 
 - يجب أن يكون تاريخ النهاية بعد أو يساوي تاريخ البداية
 - يجب التحقق من عدم تداخل فترات الإجازات ضمن نفس النطاق الزمني
-- يجب التحقق من صحة موعد إرسال الإشعارات (`send_notifications_at`) إذا كان الإشعار مفعلاً
 
 ---
 
@@ -120,35 +119,7 @@
 
 ---
 
-## 6. إدارة تعريفات الإشعارات (Notifications)
-
-### الصلاحيات
-
-- `countries_management.notifications.view` - عرض تعريفات الإشعارات
-- `countries_management.notifications.create` - إنشاء تعريف إشعار جديد
-- `countries_management.notifications.update` - تعديل تعريف إشعار
-- `countries_management.notifications.delete` - حذف تعريف إشعار
-
-### المجموعات (Groups)
-
-- `countries_management.notifications.groups.view` - عرض مجموعات الإشعارات
-- `countries_management.notifications.groups.manage` - إدارة مجموعات الإشعارات
-
-### قنوات الإرسال (Channels)
-
-- `countries_management.notifications.channels.configure` - تكوين قنوات الإرسال (app/watsi/sms)
-- `countries_management.notifications.channels.set_status` - تعيين حالة القناة (forced/active/inactive)
-
-### القواعد
-
-- يجب التحقق من صحة صيغة المعرف (Slug) بصيغة `groupSlug.definitionSlug`
-- يجب التحقق من عدم تكرار المعرف داخل نفس الدولة
-- يجب التحقق من صحة المتغيرات (`variables`) المستخدمة في المحتوى
-- يجب التحقق من أن حالة القناة واحدة من: `forced`, `active`, `inactive`
-
----
-
-## 7. إعدادات الأسبوع (Weekdays Settings)
+## 6. إعدادات الأسبوع (Weekdays Settings)
 
 ### الصلاحيات
 
@@ -163,7 +134,7 @@
 
 ---
 
-## 8. تخصيصات تسجيل الكيان (Entity Registration Customizations)
+## 7. تخصيصات تسجيل الكيان (Entity Registration Customizations)
 
 ### الصلاحيات
 
@@ -192,7 +163,7 @@
 
 ---
 
-## 9. إدارة المناطق (Regions Management)
+## 8. إدارة المناطق (Regions Management)
 
 ### الصلاحيات
 

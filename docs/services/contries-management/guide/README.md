@@ -12,7 +12,6 @@
 - [التقويم](./calendar.md)
 - [إدارة المواد](./subjects-management.md)
 - [إدارة الأعوام الدراسية](./academic-years.md)
-- [إدارة تعريفات الإشعارات](./notifications.md)
 - [تخصيصات تسجيل الكيان](./entity-registration-customizations.md)
 - [إعدادات الأسبوع](./weekdays-settings.md)
 - [إدارة المناطق](./regions-management.md)

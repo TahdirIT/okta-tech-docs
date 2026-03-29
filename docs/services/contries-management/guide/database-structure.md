@@ -77,12 +77,6 @@
 
 > ملاحظة: في `v5website` جدول `subjects` مرتبط بـ `term_id` و `group_level_id` ويحتوي أيضًا `school_id` كـ override. في خدمة إدارة الدول نقترح الفصل الواضح بين تعريف المادة المرجعي على مستوى الدولة وبين تخصيصات المدرسة.
 
-## تعريفات الإشعارات (Notification Definitions)
-
-### 11) `notification_definitions`
-
-تعريف نصوص الإشعارات وقنواتها حسب الدولة (مع إمكانية `school_id` كـ override عند الحاجة).
-
 ## مقارنة سريعة مع `v5website` (ما الذي سنحافظ عليه؟ وما الذي سنحسّنه؟)
 
 ### ما هو مطابق/قريب
@@ -90,7 +84,6 @@
 - `countries`, `regions`, `cities`, `districts`
 - `academic_years`, `terms`
 - `holiday_schedules` (polymorphic على Country/School)
-- `notification_definitions`
 - تخزين إعدادات الدولة مثل `weekdays` و `active_term_id` كـ JSON داخل `model_settings`
 
 ### التحسينات المقترحة (Laravel 12 + Postgres)

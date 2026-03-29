@@ -16,7 +16,6 @@
 - [2) Regions / Cities / Districts](#2-regions--cities--districts)
 - [3) Calendar (Academic Years / Terms / Holidays)](#3-calendar-academic-years--terms--holidays)
 - [4) Subjects](#4-subjects)
-- [5) Notifications](#5-notifications)
 - [6) Weekdays Settings](#6-weekdays-settings)
 - [7) Entity Registration Customizations](#7-entity-registration-customizations)
 
@@ -115,32 +114,6 @@
 | تحديث مادة | `app/Services/CountriesManagement/Subjects/UpdateSubject.php` |
 | حذف مادة | `app/Services/CountriesManagement/Subjects/DeleteSubject.php` |
 | ربط مادة بالمراحل/المستويات | `app/Services/CountriesManagement/Subjects/AssignSubjectEducationLevels.php` |
-
----
-
-## 5) Notifications
-
-### Notification Definitions
-
-| عنوان الفنكشن | مكان الملف |
-|---|---|
-| عرض تعريفات الإشعارات | `app/Services/CountriesManagement/NotificationDefinitions/ListNotificationDefinitions.php` |
-| عرض تفاصيل تعريف إشعار | `app/Services/CountriesManagement/NotificationDefinitions/ShowNotificationDefinition.php` |
-| إنشاء تعريف إشعار | `app/Services/CountriesManagement/NotificationDefinitions/CreateNotificationDefinition.php` |
-| تحديث تعريف إشعار | `app/Services/CountriesManagement/NotificationDefinitions/UpdateNotificationDefinition.php` |
-| حذف تعريف إشعار | `app/Services/CountriesManagement/NotificationDefinitions/DeleteNotificationDefinition.php` |
-| تكوين قنوات الإرسال (app/watsi/sms) | `app/Services/CountriesManagement/NotificationDefinitions/ConfigureNotificationChannels.php` |
-| تعيين حالة قناة (forced/active/inactive) | `app/Services/CountriesManagement/NotificationDefinitions/SetNotificationChannelStatus.php` |
-
-### Notifications (Instances) + Receivers
-
-| عنوان الفنكشن | مكان الملف |
-|---|---|
-| عرض الإشعارات المرسلة/المجدولة | `app/Services/CountriesManagement/Notifications/ListNotifications.php` |
-| إنشاء إشعار | `app/Services/CountriesManagement/Notifications/CreateNotification.php` |
-| تحديث إشعار | `app/Services/CountriesManagement/Notifications/UpdateNotification.php` |
-| حذف إشعار | `app/Services/CountriesManagement/Notifications/DeleteNotification.php` |
-| عرض مستلمي الإشعار | `app/Services/CountriesManagement/NotificationReceivers/ListNotificationReceivers.php` |
 
 ---
 

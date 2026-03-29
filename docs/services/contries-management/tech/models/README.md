@@ -17,7 +17,4 @@
 - [Subject Education Levels](./subject_education_levels.md)
 - [Holiday Schedules](./holiday_schedules.md)
 - [Model Settings](./model_settings.md)
-- [Notification Definitions](./notification_definitions.md)
-- [Notifications](./notifications.md)
-- [Notification Receivers](./notification_receivers.md)
 
