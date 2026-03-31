@@ -1,0 +1,13 @@
+from: register-tenant
+flows:
+  - to: auth-finish-tenant-registration
+    type: form
+    method: POST
+    middleware: [guest]
+    source: livewire
+
+  - to: login
+    type: link
+    method: GET
+    middleware: []
+    source: blade

@@ -1,0 +1,7 @@
+from: login-nafath
+flows:
+  - to: login
+    type: redirect
+    method: GET
+    middleware: []
+    source: route

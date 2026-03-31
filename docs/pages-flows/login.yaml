@@ -1,0 +1,31 @@
+from: login
+flows:
+  - to: auth-context
+    type: form
+    method: POST
+    middleware: []
+    source: livewire
+
+  - to: dashboard
+    type: form
+    method: POST
+    middleware: []
+    source: livewire
+
+  - to: register-tenant
+    type: link
+    method: GET
+    middleware: [guest]
+    source: blade
+
+  - to: login-nafath
+    type: link
+    method: GET
+    middleware: []
+    source: blade
+
+  - to: login-microsoft
+    type: link
+    method: GET
+    middleware: []
+    source: blade

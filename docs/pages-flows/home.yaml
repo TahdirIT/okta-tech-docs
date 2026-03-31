@@ -1,0 +1,13 @@
+from: home
+flows:
+  - to: privacy
+    type: link
+    method: GET
+    middleware: []
+    source: blade
+
+  - to: terms
+    type: link
+    method: GET
+    middleware: []
+    source: blade

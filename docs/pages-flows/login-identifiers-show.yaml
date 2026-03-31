@@ -1,0 +1,31 @@
+from: login-identifiers-show
+flows:
+  - to: user-password-edit
+    type: link
+    method: GET
+    middleware: [auth, verified]
+    source: blade
+
+  - to: profile-edit
+    type: link
+    method: GET
+    middleware: [auth]
+    source: blade
+
+  - to: devices-show
+    type: link
+    method: GET
+    middleware: [auth]
+    source: blade
+
+  - to: two-factor-show
+    type: link
+    method: GET
+    middleware: [auth, verified]
+    source: blade
+
+  - to: appearance-edit
+    type: link
+    method: GET
+    middleware: [auth, verified]
+    source: blade

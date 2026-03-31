@@ -1,0 +1,7 @@
+from: logout-get
+flows:
+  - to: login
+    type: auth-redirect
+    method: GET
+    middleware: [auth]
+    source: route

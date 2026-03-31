@@ -1,0 +1,7 @@
+from: settings-countries-redirect
+flows:
+  - to: settings-countries
+    type: redirect
+    method: GET
+    middleware: [auth]
+    source: route

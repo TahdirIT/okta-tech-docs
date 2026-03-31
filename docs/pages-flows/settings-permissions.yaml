@@ -1,0 +1,37 @@
+from: settings-permissions
+flows:
+  - to: settings-permissions
+    type: form
+    method: POST
+    middleware: [auth, context, permission:rbac.permissions.view]
+    source: livewire
+
+  - to: settings-general
+    type: link
+    method: GET
+    middleware: [auth]
+    source: blade
+
+  - to: settings-roles
+    type: link
+    method: GET
+    middleware: [auth, context, permission:rbac.roles.view]
+    source: blade
+
+  - to: settings-users
+    type: link
+    method: GET
+    middleware: [auth, context, permission:rbac.users.view]
+    source: blade
+
+  - to: settings-tenants
+    type: link
+    method: GET
+    middleware: [auth, context, permission:tenants.view]
+    source: blade
+
+  - to: settings-countries
+    type: link
+    method: GET
+    middleware: [auth]
+    source: blade

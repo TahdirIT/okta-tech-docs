@@ -1,0 +1,31 @@
+from: devices-show
+flows:
+  - to: devices-show
+    type: form
+    method: POST
+    middleware: [auth]
+    source: livewire
+
+  - to: profile-edit
+    type: link
+    method: GET
+    middleware: [auth]
+    source: blade
+
+  - to: login-identifiers-show
+    type: link
+    method: GET
+    middleware: [auth]
+    source: blade
+
+  - to: two-factor-show
+    type: link
+    method: GET
+    middleware: [auth, verified]
+    source: blade
+
+  - to: appearance-edit
+    type: link
+    method: GET
+    middleware: [auth, verified]
+    source: blade
