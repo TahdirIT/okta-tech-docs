@@ -1,7 +1,7 @@
 You are an expert Laravel system analyzer.
 
-Your task is to extract all user navigation flows in the Laravel project located at:
-[path-to-project-to-be-analyzed]
+Your task is to extract all user navigation relations in the Laravel project located at:
+{{path-to-project-to-be-analyzed}}
 
 and generate structured YAML files.
 
@@ -11,7 +11,7 @@ and generate structured YAML files.
 
 All output files must be generated inside this directory:
 
-generated/page-flows/
+{{generated/page-relations/}}
 
 Each file represents ONE source page (FROM page).
 
@@ -19,8 +19,8 @@ File naming rule:
 <from-page>.yaml
 
 Example:
-generated/page-flows/landing-page.yaml
-generated/page-flows/user-login.yaml
+generated/page-relations/landing-page.yaml
+generated/page-relations/user-login.yaml
 
 # =========================
 # FILE FORMAT (YAML)
@@ -29,12 +29,11 @@ generated/page-flows/user-login.yaml
 Each file must follow this structure:
 
 from: <page-name>
-flows:
+relations:
   - to: <target-page>
-    type: <link|redirect|form|auth-redirect>
-    method: <GET|POST|PUT|DELETE|N/A>
-    middleware: [<list-of-middlewares>]
-    source: <blade|controller|livewire|inertia|route|inferred>
+    relation: <navigation|parent-child|form|auth>
+  - to: <target-page>
+    relation: <navigation|parent-child|form|auth>
 
 # =========================
 # PAGE NAME RULE
@@ -56,12 +55,13 @@ UserLoginController → user-login
 # =========================
 
 1. DO NOT output JSON.
-2. DO NOT output combined global flow list.
-3. Each file MUST contain only flows starting from ONE "from" page.
+2. DO NOT output a combined global list.
+3. Each file MUST contain only relations starting from ONE "from" page.
 4. Ignore API-only endpoints unless they return UI views.
-5. Infer missing flows when obvious (e.g. login → dashboard).
-6. Include authentication flows (login/register/logout/redirects).
+5. Infer missing relations when obvious (e.g. login → dashboard).
+6. Include authentication-related relations (login/register/logout flows).
 7. Respect multi-tenant or subdomain context if present.
+8. DO NOT include technical execution details such as internal routing mechanics.
 
 # =========================
 # ANALYSIS STRATEGY (CRITICAL)
@@ -72,15 +72,15 @@ You MUST NOT scan and process the entire project at once.
 Follow incremental analysis:
 
 STEP 1:
-- Scan ONLY routes (web.php and route files)
+- Scan ONLY route definitions (web routes files)
 - Identify a small batch of pages (5–10 max)
 
 STEP 2:
 - Analyze ONLY related files:
-  controllers + blade views + livewire components
+  controllers, blade templates, Livewire files, and route definitions
 
 STEP 3:
-- Extract flows ONLY for that batch
+- Extract relations ONLY for that batch
 
 STEP 4:
 - Generate YAML files for those "from" pages immediately
@@ -104,17 +104,15 @@ Always:
 # OUTPUT EXAMPLE
 # =========================
 
-File: generated/page-flows/landing-page.yaml
+File: generated/page-relations/landing-page.yaml
 
 from: landing-page
-flows:
+relations:
   - to: user-login
-    type: link
-    method: GET
-    middleware: [guest]
-    source: blade
+    relation: navigation
 
   - to: register-tenant
-    type: link
-    method: GET
-    middleware: [guest]
+    relation: navigation
+
+  - to: dashboard-home
+    relation: auth

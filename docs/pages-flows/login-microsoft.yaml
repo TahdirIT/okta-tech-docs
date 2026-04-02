@@ -1,7 +1,0 @@
-from: login-microsoft
-flows:
-  - to: login
-    type: redirect
-    method: GET
-    middleware: []
-    source: route

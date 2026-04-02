@@ -1,0 +1,6 @@
+from: profile.edit
+description: View and update basic profile information for the signed-in user.
+relations:
+  - to: account.index
+    relation: parent-child
+

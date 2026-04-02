@@ -1,7 +1,0 @@
-from: settings
-flows:
-  - to: settings-general
-    type: redirect
-    method: GET
-    middleware: [auth]
-    source: route

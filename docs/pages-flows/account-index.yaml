@@ -1,7 +1,0 @@
-from: account-index
-flows:
-  - to: profile-edit
-    type: redirect
-    method: GET
-    middleware: [auth]
-    source: route

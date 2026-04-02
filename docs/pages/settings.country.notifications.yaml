@@ -1,0 +1,6 @@
+from: settings.country.notifications
+description: Manage localized notification templates and delivery settings for the country.
+relations:
+  - to: settings.countries
+    relation: parent-child
+
