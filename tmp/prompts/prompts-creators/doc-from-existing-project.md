@@ -20,7 +20,14 @@ The documentation should follow the same structure and conventions as existing s
   - service_functions/*.md
   - permissions.md
   - tenancy.md (if applicable)
-
+- overview.md
+- user-journey/tenant_admin/*.md
+- user-journey/exam-creator/*.md (teacher as default)
+- user-journey/proctor/*.md
+- user-journey/grader/*.md
+- user-journey/student/*.md
+- user-journey/guardian/*.md
+- user-journey/auditor/*.md
 External Constraints & Adaptation Guidelines:
 These are limitations from the target system context and rules for adapting the feature into the new architecture.
 - 
